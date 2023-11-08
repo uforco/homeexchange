@@ -1,6 +1,27 @@
+
+import Lottie from 'react-lottie';
+import animationData from '../../assets/icons/Animation-addservice2.json';
+
 const Addservice = () => {
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true, 
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
+
   return (
-    <>
+    <div className=" relative w-full h-full " >
+        <div className=" absolute flex justify-center items-center w-full h-full left-0 top-0 " >
+            <div className=" " >
+              <Lottie options={defaultOptions}
+                height={200}
+                width={200}/>
+            </div>
+        </div>
         <div className=" absolute -z-10 top-0 left-0 w-full h-full overflow-hidden flex justify-center items-center " >
             <div className=" relative after:absolute after:w-full after:h-full after:left-0 after:top-0 after:content-['']  after:bg-opacity-20 after:backdrop-blur-sm " >
                 <img src="https://i.ibb.co/rxGwM85/undraw-Updates-re-o5af.png" alt="" />
@@ -103,7 +124,7 @@ const Addservice = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
