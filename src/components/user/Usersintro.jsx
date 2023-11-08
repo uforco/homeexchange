@@ -5,20 +5,25 @@ import Contextdata from './../../hooks/Contexthook';
 const Usersintro = () => {
   const Navigatebackhome = useNavigate()
   // console.log( Contextdata() )
-  const {User,  LogOutUser} = Contextdata() 
+  const {User, isLoad, LogOutUser} = Contextdata() 
   const LogOut = () => {
     LogOutUser().then(()=>{
       Navigatebackhome("/")
     })
       .catch()
   }
-  console.log(User)
+
+  console.log(isLoad)
   return (
     <div>
       <div className="dropdown static  dropdown-end">
         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
           <div className="w-10 rounded-full">
-            <img src={user} />
+            <img src={
+                !isLoad?
+                  `${User?.photoURL}`
+                :
+                   user} />
           </div>
         </label>
         <ul
@@ -30,7 +35,7 @@ const Usersintro = () => {
               Profile
               <span className="badge">
                 {
-                  User?.displayName?
+                  !isLoad?
                     User?.displayName
                   :
                     "guest"

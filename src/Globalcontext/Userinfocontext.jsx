@@ -2,26 +2,38 @@ import { createContext, useEffect, useState } from "react";
 import { PropTypes } from 'prop-types';
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import Userauth from "../config/Firebaseconfig";
+import  axios  from 'axios';
 
 export const Usercontext = createContext()
 const Userinfocontext = ({children}) => {
     const [User, setUser] = useState(null)
+    const [isLoad, setIsload] = useState(true)
+
     useEffect(()=>{
         const unSubscribe = onAuthStateChanged(Userauth, (user)=>{
             if(user){
-                setUser(user)
+                if(!user.displayName){
+                    axios.get(`http://localhost:4500/userinfo?email=${user.email}`)
+                        .then(res => {
+                            user.displayName = res.data.username
+                            user.photoURL = res.data.PhotoLink
+                            setUser(user)
+                            setIsload(!isLoad)
+                        })
+                }
             }
             setUser(user)
         })
         return () => unSubscribe()
     },[])
-
-    console.log(User)
     // logout User
     const LogOutUser = () => {
+        setIsload(!isLoad)
         return signOut(Userauth)
     }
     const data = {
+        isLoad,
+        setIsload,
         User,
         setUser,
         LogOutUser

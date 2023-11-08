@@ -7,9 +7,20 @@ import { MdScheduleSend, MdLibraryAdd } from "react-icons/md";
 import { AiFillHome } from "react-icons/ai";
 import { Avatar } from "flowbite-react";
 import Contextdata from './../../hooks/Contexthook';
+import avatimg from "../../assets/icons/profile-user.png"
+import { useNavigate } from "react-router-dom";
 
 const Dashbordmanu = () => {
-  const { User } = Contextdata()
+  const {User, isLoad, LogOutUser} = Contextdata() 
+  const Navigatebackhome = useNavigate()
+  const LogOut = () => {
+    LogOutUser().then(()=>{
+      Navigatebackhome("/")
+    })
+      .catch()
+  }
+
+
   return (
     <Sidebar className=" w-14 sm:w-52 h-full overflow-hidden " aria-label="Default sidebar example">
       <div className=" my-2 mb-3 ">
@@ -17,20 +28,39 @@ const Dashbordmanu = () => {
           <div>
             <Avatar
               className=" hidden sm:flex "
-              img="https://i.ibb.co/QHyYjBg/author9-1.jpg"
+              img={
+                  !isLoad?
+                    `${User?.photoURL}`
+                  :
+                    avatimg
+                  
+                  }
               size="lg"
               rounded
             />
             <Avatar
             className=" flex sm:hidden "
-              img="https://i.ibb.co/QHyYjBg/author9-1.jpg"
+              img={
+                !isLoad?
+                  `${User?.photoURL}`
+                :
+                  avatimg
+                
+              }
               size="md"
               rounded
             />
           </div>
           <div className=" font-DMSans hidden sm:block ">
-            <h2 className=" text-center font-semibold "> User Name </h2>
-            <h2>{User?.email? User?.email :  "user@email.com" } </h2>
+            <h2 className=" text-center font-semibold ">
+              {
+                !isLoad?
+                  User?.displayName
+                :
+                  "Guest User"
+              }
+            </h2>
+            <h2>{User?.email? User?.email :  "Guest@email.com" } </h2>
           </div>
         </div>
       </div>
@@ -60,9 +90,11 @@ const Dashbordmanu = () => {
               <span className=" hidden sm:block " >My Schedule</span>
             </Sidebar.Item>
 
-            <Sidebar.Item href="#" icon={FiPower}>
-              <span className=" hidden sm:block " >Sign Out</span>
-            </Sidebar.Item>
+            <div onClick={LogOut} >
+              <Sidebar.Item icon={FiPower}>
+                <span className=" hidden sm:block " >Sign Out</span>
+              </Sidebar.Item>
+            </div>
           </Sidebar.ItemGroup>
         </Sidebar.Items>
       </div>

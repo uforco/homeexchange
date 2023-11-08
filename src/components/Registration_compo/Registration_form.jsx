@@ -1,20 +1,28 @@
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { BiLinkAlt } from "react-icons/bi";
 import { FaEyeSlash, FaEye } from "react-icons/fa6";
+import Userauth from "../../config/Firebaseconfig";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
 
 
 const Registration_form = () => {
   const [showpass, setShowpass] = useState(true)
-  // const Navigateback = useNavigate()
+  const Navigateback = useNavigate()
   const registration = (e) => {
       e.preventDefault()
       // console.log(username.length > 3 && username.length < 6)
       const username = e.target.Username.value
-      // const PhotoLink = e.target.PhotoLink.value
+      const PhotoLink = e.target.PhotoLink.value
       const email = e.target.email.value
       const password = e.target.password.value
+      const userRegiInfo = {
+        username, PhotoLink, email, password
+      }
+
       console.log(username.length < 7 )
       if(!username){
         return toast.error("fill this Username must be mini 4 & max 8 characters")
@@ -42,7 +50,27 @@ const Registration_form = () => {
         if(password.length < 6){
           return toast.error("Password must be 6 characters long")
         }
-        console.log("pass this")
+        console.log(userRegiInfo)
+
+        createUserWithEmailAndPassword(Userauth, email, password)
+          .then((userCredential)=>{
+            const User = userCredential.user
+            console.log(User)
+            User.displayName = username
+            User.photoURL = PhotoLink
+            axios.post('http://localhost:4500/registration', userRegiInfo)
+            .then( (response) => {
+              console.log(response.data);
+              if(response.data.acknowledged){
+                Navigateback("/")
+              }
+            })
+          })
+          .catch((erro)=>{ 
+            if(erro){
+              return toast.error("Email Already Use !  Try To Another Email")
+            }
+           })
       }
 
 

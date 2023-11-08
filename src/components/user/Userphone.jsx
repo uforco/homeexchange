@@ -7,7 +7,7 @@ import Contextdata from './../../hooks/Contexthook';
 import { Link, useNavigate } from 'react-router-dom';
 const Userphone = () => {
   const Navigatebackhome = useNavigate()
-  const {User, LogOutUser} = Contextdata()
+  const {User, isLoad, LogOutUser} = Contextdata()
 
   const LogOut = () => {
     LogOutUser().then(()=>{
@@ -17,9 +17,22 @@ const Userphone = () => {
   }
   return (
         <div className=' flex h-12 overflow-hidden justify-between items-center w-full ' >
-            <div className=' flex items-center gap-3 ' >
-              <Avatar img={avatimg} rounded bordered />
-              <h2 className=' text-black font-semibold text-xl ' > Name </h2>
+            <div className=' flex items-center px-2 gap-3 ' >
+              <Avatar img={
+                !isLoad?
+                  `${User?.photoURL}`
+                :
+                  avatimg
+                
+                } rounded bordered />
+              <h2 className=' text-black font-semibold text-xl ' > 
+                {
+                  !isLoad?
+                    User?.displayName
+                  :
+                    "guest"
+                }
+              </h2>
             </div>
             <div>
               {
