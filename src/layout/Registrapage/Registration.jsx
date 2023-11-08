@@ -3,7 +3,6 @@ import logo from "../../assets/houselogo.png";
 import Registration_form from "./../../components/Registration_compo/Registration_form";
 import { Toaster } from 'react-hot-toast';
 
-
 const Registration = () => {
   return (
     <div className=' bg-[url("https://i.ibb.co/L9hQ5CB/login.jpg")]  bg-cover' >

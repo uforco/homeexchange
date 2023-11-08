@@ -18,14 +18,18 @@ const Userinfocontext = ({children}) => {
                             user.displayName = res.data.username
                             user.photoURL = res.data.PhotoLink
                             setUser(user)
-                            setIsload(!isLoad)
+                            setIsload(false)
                         })
                 }
+                setIsload(false)
             }
             setUser(user)
         })
         return () => unSubscribe()
     },[])
+
+    console.log(User)
+    console.log(isLoad)
     // logout User
     const LogOutUser = () => {
         setIsload(!isLoad)

@@ -12,8 +12,6 @@ const Usersintro = () => {
     })
       .catch()
   }
-
-  console.log(isLoad)
   return (
     <div>
       <div className="dropdown static  dropdown-end">
@@ -32,15 +30,12 @@ const Usersintro = () => {
         >
           <li>
             <span className="justify-between">
-              Profile
-              <span className="badge">
                 {
                   !isLoad?
                     User?.displayName
                   :
-                    "guest"
+                    "Guest User "
                 }
-              </span>
             </span>
           </li>
           <li>
