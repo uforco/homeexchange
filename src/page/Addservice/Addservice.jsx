@@ -27,14 +27,14 @@ const Addservice = () => {
     const servicePhoro = form.Servicephoro.value
     const servicePrice = parseInt(form.ServicePrice.value)
     const serviceAria = form.ServiceAria.value
-    const serviseDescription = form.ServiseDescription.value
+    const serviceDescription = form.ServiceDescription.value
     const providerName = User.displayName
     const providerEmail = User.email
     const providerPhoto = User.photoURL
 
     console.log({serviceName, 
       servicePhoro, servicePrice, 
-      serviceAria, serviseDescription, 
+      serviceAria, serviceDescription, 
       providerName, providerEmail, providerPhoto
     })
 
@@ -45,7 +45,7 @@ const Addservice = () => {
         width={70}/>
       })
     }
-    if(serviceName.length < 31){
+    if(serviceName.length > 31){
       return toast("Service Name must be max 30 characters",{
         icon: <Lottie options={defaultOptions(erroralt)}
         height={70}
@@ -73,7 +73,7 @@ const Addservice = () => {
         width={70}/>
       })
     }
-    if(!serviseDescription){
+    if(!serviceDescription){
       return toast(" Writing Your Servise Description ", {
         icon: <Lottie options={defaultOptions(erroralt)}
         height={70}
@@ -83,7 +83,7 @@ const Addservice = () => {
 
     const servicedel = {serviceName, 
       servicePhoro, servicePrice, 
-      serviceAria, serviseDescription, 
+      serviceAria, serviceDescription, 
       providerName, providerEmail, providerPhoto
     }
 
@@ -100,7 +100,7 @@ const Addservice = () => {
         form.Servicephoro.value = ""
         form.ServicePrice.value = ""
         form.ServiceAria.value = ""
-        form.ServiseDescription.value = ""
+        form.ServiceDescription.value = ""
       }
 
     })

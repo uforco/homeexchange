@@ -8,6 +8,7 @@ import Login from '../layout/Loginpage/Login';
 import Registration from '../layout/Registrapage/Registration';
 import Dashboard from '../layout/Dashboarduser/Dashboard';
 import Addservice from '../page/Addservice/Addservice';
+import Allservices from '../layout/Allservices/Allservices';
 
 const Router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ const Router = createBrowserRouter([
         {
             path: "contactus",
             element: <Contactus></Contactus>
+        },
+        {
+            path: "services",
+            element: <Allservices></Allservices>
         }
       ]
     },

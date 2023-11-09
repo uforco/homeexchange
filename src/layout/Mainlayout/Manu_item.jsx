@@ -27,6 +27,14 @@ const Manu_item = () => {
             Contact Us
         </NavLink>
       </li>
+      <li >
+        <NavLink to="/services" className={({isActive}) => isActive? 
+            "bg-rose-500 text-white lg:border-rose-500 font-medium p-2 lg:py-2 text-sm lg:text-xs px-5 rounded lg:rounded-full lg:border" 
+            : 
+            ` hover:bg-rose-500 hover:lg:border-rose-500 hover:text-white  bg-transparent text-black font-medium p-2 lg:py-2 text-sm lg:text-xs px-5 rounded lg:rounded-full lg:border`}  >
+            Services
+        </NavLink>
+      </li>
       <li className=" sm:hidden " >
         <NavLink to="/dashboard" className={({isActive}) => isActive? 
             "bg-rose-500 text-white lg:border-rose-500 font-medium p-2 lg:py-2 text-sm lg:text-xs px-5 rounded lg:rounded-full lg:border" 
@@ -35,6 +43,7 @@ const Manu_item = () => {
             Dashboard
         </NavLink>
       </li>
+      
     </>
   );
 };
