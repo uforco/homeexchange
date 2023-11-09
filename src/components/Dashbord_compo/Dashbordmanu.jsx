@@ -8,7 +8,7 @@ import { AiFillHome } from "react-icons/ai";
 import { Avatar } from "flowbite-react";
 import Contextdata from './../../hooks/Contexthook';
 import avatimg from "../../assets/icons/profile-user.png"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Dashbordmanu = () => {
   const {User, isLoad, LogOutUser} = Contextdata() 
@@ -67,28 +67,46 @@ const Dashbordmanu = () => {
       <div className=" px-5 sm:p-0 " >
         <Sidebar.Items>
           <Sidebar.ItemGroup>
-            <Sidebar.Item href="/" icon={AiFillHome}>
-              <span className=" hidden sm:block " >Home</span>
-            </Sidebar.Item>
+            <Link to="/">
+              <Sidebar.Item icon={AiFillHome}>
+                <span className=" hidden sm:block " >Home</span>
+              </Sidebar.Item>
+            </Link>
             
-            <Sidebar.Item href="/dashboard" icon={HiChartPie}>
-              <span className=" hidden sm:block " >Dashboard</span>
-            </Sidebar.Item>
-            <Sidebar.Item
-              href="/dashboard/addservice"
-              icon={MdLibraryAdd}
-            >
-              <span className=" hidden sm:block " >Add Service</span>
-            </Sidebar.Item>
-            <Sidebar.Item href="/dashboard/manageservices" icon={BiSolidCog}>
-              <span className=" hidden sm:block " >Manage Services</span>
-            </Sidebar.Item>
-            <Sidebar.Item href="/dashboard/inbox" icon={HiInbox}>
-              <span className=" hidden sm:block " >Inbox</span>
-            </Sidebar.Item>
-            <Sidebar.Item href="/dashboard/myschedule" icon={MdScheduleSend}>
-              <span className=" hidden sm:block " >My Schedule</span>
-            </Sidebar.Item>
+            <Link to="/dashboard" >
+              <Sidebar.Item icon={HiChartPie}>
+                <span className=" hidden sm:block " >Dashboard</span>
+              </Sidebar.Item>
+            </Link>
+
+
+           <Link to="/dashboard/addservice" >
+              <Sidebar.Item
+                  icon={MdLibraryAdd}
+                >
+                  <span className=" hidden sm:block " >Add Service</span>
+                </Sidebar.Item>
+           </Link>
+
+
+            <Link to="/dashboard/manageservices" >
+              <Sidebar.Item icon={BiSolidCog}>
+                <span className=" hidden sm:block " >Manage Services</span>
+              </Sidebar.Item>
+            </Link>
+
+
+            <Link to="/dashboard/inbox" >
+              <Sidebar.Item  icon={HiInbox}>
+                <span className=" hidden sm:block " >Inbox</span>
+              </Sidebar.Item>
+            </Link>
+
+            <Link to="/dashboard/myschedule" >
+              <Sidebar.Item icon={MdScheduleSend}>
+                <span className=" hidden sm:block " >My Schedule</span>
+              </Sidebar.Item>
+            </Link>
 
             <div onClick={LogOut} >
               <Sidebar.Item icon={FiPower}>

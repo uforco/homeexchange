@@ -12,8 +12,11 @@ const Userinfocontext = ({children}) => {
     useEffect(()=>{
         const unSubscribe = onAuthStateChanged(Userauth, (user)=>{
             if(user){
+                if(user.displayName){
+                    setIsload(false)
+                }
                 if(!user.displayName){
-                    axios.get(`http://localhost:4500/userinfo?email=${user.email}`)
+                    axios.get(`/userinfo?email=${user.email}`)
                         .then(res => {
                             user.displayName = res.data.username
                             user.photoURL = res.data.PhotoLink
@@ -21,9 +24,12 @@ const Userinfocontext = ({children}) => {
                             setIsload(false)
                         })
                 }
-                setIsload(false)
+
             }
-            setUser(user)
+            if(!user){
+                setUser(user)
+                setIsload(true)
+            }
         })
         return () => unSubscribe()
     },[])

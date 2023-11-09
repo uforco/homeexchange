@@ -5,11 +5,10 @@ import erroralt from '../../assets/icons/erroralt.json';
 import Addservicefrom from './../../components/Dashbord_compo/Addservicefrom';
 import Contextdata from '../../hooks/Contexthook';
 import toast from 'react-hot-toast';
+import axios from 'axios';
 
 const Addservice = () => {
-
   const {User} = Contextdata()
-
   const addservicesystem = (e) => {
     e.preventDefault()
     console.log(e.target)
@@ -71,7 +70,7 @@ const Addservice = () => {
       })
     }
 
-
+    axios.post("")
 
 
 
