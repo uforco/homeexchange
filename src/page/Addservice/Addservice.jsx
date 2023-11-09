@@ -1,6 +1,6 @@
 
 import Lottie from 'react-lottie';
-// import animationData from '../../assets/icons/Animation-addservice2.json';
+import animationData from '../../assets/icons/Animation-addservice2.json';
 import erroralt from '../../assets/icons/erroralt.json';
 import Addservicefrom from './../../components/Dashbord_compo/Addservicefrom';
 import Contextdata from '../../hooks/Contexthook';
@@ -9,14 +9,25 @@ import axios from 'axios';
 
 const Addservice = () => {
   const {User} = Contextdata()
+  // Lottie animation system
+  const defaultOptions = (e) => ( {
+    loop: false,
+    autoplay: true, 
+    animationData: e,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  })
+  
+  // Add service system
   const addservicesystem = (e) => {
     e.preventDefault()
-    console.log(e.target)
-    const serviceName = e.target.ServiceName.value
-    const servicePhoro = e.target.Servicephoro.value
-    const servicePrice = parseInt(e.target.ServicePrice.value)
-    const serviceAria = e.target.ServiceAria.value
-    const serviseDescription = e.target.ServiseDescription.value
+    const form = e.target
+    const serviceName = form.ServiceName.value
+    const servicePhoro = form.Servicephoro.value
+    const servicePrice = parseInt(form.ServicePrice.value)
+    const serviceAria = form.ServiceAria.value
+    const serviseDescription = form.ServiseDescription.value
     const providerName = User.displayName
     const providerEmail = User.email
     const providerPhoto = User.photoURL
@@ -35,66 +46,68 @@ const Addservice = () => {
       })
     }
     if(serviceName.length < 31){
-      return toast.error("Service Name must be max 30 characters",{
+      return toast("Service Name must be max 30 characters",{
         icon: <Lottie options={defaultOptions(erroralt)}
         height={70}
         width={70}/>
       })
     }
     if(!servicePhoro){
-      return toast.error("Set your Service Phoro Url",{
+      return toast("Set your Service Phoro Url",{
         icon: <Lottie options={defaultOptions(erroralt)}
         height={70}
         width={70}/>
       })
     }
     if(!servicePrice){
-      return toast.error(" Add your Service Price ",{
+      return toast(" Add your Service Price ",{
         icon: <Lottie options={defaultOptions(erroralt)}
         height={70}
         width={70}/>
       })
     }
     if(!serviceAria){
-      return toast.error(" Add Your Service Aria ", {
+      return toast(" Add Your Service Aria ", {
         icon: <Lottie options={defaultOptions(erroralt)}
         height={70}
         width={70}/>
       })
     }
     if(!serviseDescription){
-      return toast.error(" Writing Your Servise Description ", {
+      return toast(" Writing Your Servise Description ", {
         icon: <Lottie options={defaultOptions(erroralt)}
         height={70}
         width={70}/>
       })
     }
 
-    axios.post("")
-
-
-
-
-  }
-
-  const defaultOptions = (e) => ( {
-    loop: false,
-    autoplay: true, 
-    animationData: e,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice'
+    const servicedel = {serviceName, 
+      servicePhoro, servicePrice, 
+      serviceAria, serviseDescription, 
+      providerName, providerEmail, providerPhoto
     }
-  })
+
+    axios.post("/addservice", servicedel)
+    .then((res) => {
+      if(res.data.acknowledged){
+        toast(" Writing Your Servise Description ", {
+          icon: <Lottie options={defaultOptions(animationData)}
+          height={50}
+          width={50}/>
+        })
+
+        form.ServiceName.value = ""
+        form.Servicephoro.value = ""
+        form.ServicePrice.value = ""
+        form.ServiceAria.value = ""
+        form.ServiseDescription.value = ""
+      }
+
+    })
+  }
   
   return (
-    <div className=" relative w-full h-full " >
-        <div className=" hidden z-20 absolute  bg-slate-50 bg-opacity-80 justify-center items-center w-full h-full left-0 top-0 " >
-            <div >
-              <Lottie options={defaultOptions}
-                height={100}
-                width={100}/>
-            </div>
-        </div>
+    <div className=" relative w-full h-full ">
         <div className=" absolute -z-10 top-0 left-0 w-full h-full overflow-hidden flex justify-center items-center " >
             <div className=" relative after:absolute after:w-full after:h-full after:left-0 after:top-0 after:content-['']  after:bg-opacity-20 after:backdrop-blur-sm " >
                 <img src="https://i.ibb.co/rxGwM85/undraw-Updates-re-o5af.png" alt="" />
