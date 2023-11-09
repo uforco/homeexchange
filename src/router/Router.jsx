@@ -9,6 +9,7 @@ import Registration from '../layout/Registrapage/Registration';
 import Dashboard from '../layout/Dashboarduser/Dashboard';
 import Addservice from '../page/Addservice/Addservice';
 import Allservices from '../layout/Allservices/Allservices';
+import Servicedetails from '../page/Singleservicedetails/Servicedetails';
 
 const Router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ const Router = createBrowserRouter([
         {
             path: "services",
             element: <Allservices></Allservices>
+        },
+        {
+            path: "servicedetails",
+            element: <Servicedetails></Servicedetails>
         }
       ]
     },
