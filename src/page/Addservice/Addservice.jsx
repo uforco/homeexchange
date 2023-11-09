@@ -1,25 +1,99 @@
 
 import Lottie from 'react-lottie';
-import animationData from '../../assets/icons/Animation-addservice2.json';
+// import animationData from '../../assets/icons/Animation-addservice2.json';
+import erroralt from '../../assets/icons/erroralt.json';
+import Addservicefrom from './../../components/Dashbord_compo/Addservicefrom';
+import Contextdata from '../../hooks/Contexthook';
+import toast from 'react-hot-toast';
 
 const Addservice = () => {
 
-  const defaultOptions = {
-    loop: true,
+  const {User} = Contextdata()
+
+  const addservicesystem = (e) => {
+    e.preventDefault()
+    console.log(e.target)
+    const serviceName = e.target.ServiceName.value
+    const servicePhoro = e.target.Servicephoro.value
+    const servicePrice = parseInt(e.target.ServicePrice.value)
+    const serviceAria = e.target.ServiceAria.value
+    const serviseDescription = e.target.ServiseDescription.value
+    const providerName = User.displayName
+    const providerEmail = User.email
+    const providerPhoto = User.photoURL
+
+    console.log({serviceName, 
+      servicePhoro, servicePrice, 
+      serviceAria, serviseDescription, 
+      providerName, providerEmail, providerPhoto
+    })
+
+    if(!serviceName){
+      return toast("fill this Service Name ",{
+        icon: <Lottie options={defaultOptions(erroralt)}
+        height={70}
+        width={70}/>
+      })
+    }
+    if(serviceName.length < 31){
+      return toast.error("Service Name must be max 30 characters",{
+        icon: <Lottie options={defaultOptions(erroralt)}
+        height={70}
+        width={70}/>
+      })
+    }
+    if(!servicePhoro){
+      return toast.error("Set your Service Phoro Url",{
+        icon: <Lottie options={defaultOptions(erroralt)}
+        height={70}
+        width={70}/>
+      })
+    }
+    if(!servicePrice){
+      return toast.error(" Add your Service Price ",{
+        icon: <Lottie options={defaultOptions(erroralt)}
+        height={70}
+        width={70}/>
+      })
+    }
+    if(!serviceAria){
+      return toast.error(" Add Your Service Aria ", {
+        icon: <Lottie options={defaultOptions(erroralt)}
+        height={70}
+        width={70}/>
+      })
+    }
+    if(!serviseDescription){
+      return toast.error(" Writing Your Servise Description ", {
+        icon: <Lottie options={defaultOptions(erroralt)}
+        height={70}
+        width={70}/>
+      })
+    }
+
+
+
+
+
+
+  }
+
+  const defaultOptions = (e) => ( {
+    loop: false,
     autoplay: true, 
-    animationData: animationData,
+    animationData: e,
     rendererSettings: {
       preserveAspectRatio: 'xMidYMid slice'
     }
-  };
-
+  })
+  
   return (
     <div className=" relative w-full h-full " >
-        <div className=" absolute flex justify-center items-center w-full h-full left-0 top-0 " >
-            <div className=" " >
+        <div className=" hidden z-20 absolute  bg-slate-50 bg-opacity-80 justify-center items-center w-full h-full left-0 top-0 " >
+            <div >
               <Lottie options={defaultOptions}
-                height={200}
-                width={200}/>
+                height={100}
+                width={100}/>
             </div>
         </div>
         <div className=" absolute -z-10 top-0 left-0 w-full h-full overflow-hidden flex justify-center items-center " >
@@ -34,88 +108,10 @@ const Addservice = () => {
               <h2 className="text-3xl font-semibold text-gray-700 capitalize dark:text-white">
                 Add Your Service
               </h2>
-
-              <form>
-                <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
-                  <div>
-                    <label
-                      className="text-gray-700 dark:text-gray-200"
-                      htmlFor="username"
-                    >
-                      Service Name
-                    </label>
-                    <input
-                      id="ServiceName"
-                      name="ServiceName"
-                      type="text"
-                      className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-500 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-800 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring bg-opacity-80 "
-                    ></input>
-                  </div>
-
-                  <div>
-                    <label
-                      className="text-gray-700 dark:text-gray-200"
-                      htmlFor="Servicephoro"
-                    >
-                      Service Phoro Url
-                    </label>
-                    <input
-                      id="Servicephoro"
-                      name="Servicephoro"
-                      type="text"
-                      className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-500 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-800 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none bg-opacity-80 focus:ring"
-                    ></input>
-                  </div>
-
-                  <div>
-                    <label
-                      className="text-gray-700 dark:text-gray-200"
-                      htmlFor="ServiceAria"
-                    >
-                      Service Aria
-                    </label>
-                    <input
-                      id="ServiceAria"
-                      name="ServiceAria"
-                      type="text"
-                      className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-500 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-800 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none bg-opacity-80 focus:ring"
-                    ></input>
-                  </div>
-
-                  <div>
-                    <label
-                      className="text-gray-700 dark:text-gray-200"
-                      htmlFor="ServicePrice"
-                    >
-                      Service Price
-                    </label>
-                    <input
-                      id="ServicePrice"
-                      name="ServicePrice"
-                      type="number"
-                      className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-500 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-800 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none bg-opacity-80 focus:ring"
-                    ></input>
-                  </div>
-                </div>
-                <div>
-                  <div className=" mt-8 ">
-                    <label
-                      className="text-gray-700 dark:text-gray-200"
-                      htmlFor="ServiseDescription"
-                    >
-                      Servise Description
-                    </label>
-                    <textarea
-                      id="ServiseDescription"
-                      name="ServiseDescription"
-                      type="text"
-                      className="block h-28 w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-500 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-800 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none bg-opacity-80 focus:ring"
-                    ></textarea>
-                  </div>
-                </div>
-
+              <form onSubmit={addservicesystem} >
+                <Addservicefrom></Addservicefrom>
                 <div className="flex justify-end mt-6">
-                  <button className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-600 rounded-md hover:bg-gray-700 focus:outline-none  focus:bg-gray-700">
+                  <button type="submit" className=" z-10 px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-600 rounded-md hover:bg-gray-700 focus:outline-none  focus:bg-gray-700">
                     Save
                   </button>
                 </div>
