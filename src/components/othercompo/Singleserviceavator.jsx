@@ -2,7 +2,6 @@ import Lottie from "react-lottie";
 import img from "../../assets/icons/medal.png"
 import { AiFillStar } from "react-icons/ai";
 import amint from "../../assets/icons/Animation-addservice2.json" 
-import { Link } from 'react-router-dom';
 
 const Singleserviceavator = () => {
     const defaultOptions = {
@@ -81,11 +80,7 @@ const Singleserviceavator = () => {
                     </p>
                 </div>
 
-                <div className=" w-full " >
-                    <Link to="" >
-                        <p className=" w-full text-center py-2 hover:bg-amber-600 font-medium bg-amber-500 " >Contact</p>
-                    </Link>
-                </div>
+                
             </div>
         </div>
     );

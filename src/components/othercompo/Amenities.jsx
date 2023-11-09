@@ -34,7 +34,7 @@ const Amenities = () => {
           <p className=" font-DMSans font-semibold " >Our basics</p>
         </p>
         <div >
-          <ul className=" grid grid-cols-3 gap-10 " >
+          <ul className=" grid grid-cols-2 sm:grid-cols-3 gap-10 " >
                 <li>
                     <div className=" flex justify-start items-center gap-2 " >
                         <span> 
