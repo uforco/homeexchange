@@ -33,7 +33,7 @@ const Router = createBrowserRouter([
             element: <Allservices></Allservices>
         },
         {
-            path: "servicedetails",
+            path: "servicedetails/:id",
             element: <Servicedetails></Servicedetails>
         }
       ]

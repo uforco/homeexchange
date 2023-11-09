@@ -53,8 +53,8 @@ const Addservice = () => {
         width={70}/>
       })
     }
-    if(serviceName.length > 31){
-      return toast("Service Name must be max 30 characters",{
+    if(serviceName.length > 51){
+      return toast("Service Name must be max 50 characters",{
         icon: <Lottie options={defaultOptions(erroralt)}
         height={70}
         width={70}/>

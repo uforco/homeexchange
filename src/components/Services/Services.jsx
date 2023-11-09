@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Services = () => {
   return (
     <div>
-      <Link to="/servicedetails" >
+      <Link to="/servicedetails/654d1e129ce8f2a463e88964" >
         <div className=" overflow-hidden hover:scale-105 transition-all ">
           <div className="flex flex-col bg-white border shadow-sm rounded-xl  transition-all  hover:bg-gradient-to-tl from-slate-400/10 via-slate-100 via-30% to-white to-90% hover:border-slate-50  ">
             <div className=" relative ">
