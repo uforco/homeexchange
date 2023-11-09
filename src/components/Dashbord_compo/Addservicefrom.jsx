@@ -35,7 +35,7 @@ const Addservicefrom = () => {
               ></input>
               <div className="  w-4/12 overflow-hidden flex justify-between items-center ">
                 <div className="  flex justify-center items-center ">
-                  <Link className=" text-xs font-semibold hover:bg-slate-400 p-1 px-6 rounded-md m-0 bg-slate-300 ">
+                  <Link target={"_blank"} to="https://imgbb.com" className=" text-xs font-semibold hover:bg-slate-400 p-1 px-6 rounded-md m-0 bg-slate-300 ">
                     {" "}
                     Upload
                   </Link>

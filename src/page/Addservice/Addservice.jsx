@@ -37,6 +37,14 @@ const Addservice = () => {
       serviceAria, serviceDescription, 
       providerName, providerEmail, providerPhoto
     })
+    // serviceUploadtime
+    const d = new Date(),
+    // minutes = d.getMinutes().toString().length == 1 ? '0'+d.getMinutes() : d.getMinutes(),
+    // hours = d.getHours().toString().length == 1 ? '0'+d.getHours() : d.getHours(),
+    // ampm = d.getHours() >= 12 ? 'pm' : 'am',
+    months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+    // days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const serviceUploadtime = months[d.getMonth()]+' '+d.getDate()+' '+d.getFullYear()
 
     if(!serviceName){
       return toast("fill this Service Name ",{
@@ -84,7 +92,7 @@ const Addservice = () => {
     const servicedel = {serviceName, 
       servicePhoro, servicePrice, 
       serviceAria, serviceDescription, 
-      providerName, providerEmail, providerPhoto
+      providerName, providerEmail, providerPhoto, UploadTime: serviceUploadtime
     }
 
     axios.post("/addservice", servicedel)
