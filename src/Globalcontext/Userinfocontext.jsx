@@ -5,7 +5,6 @@ import Userauth from "../config/Firebaseconfig";
 import  axios  from 'axios';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-
 export const Usercontext = createContext()
 
 const queryClient = new QueryClient()
@@ -14,6 +13,7 @@ const Userinfocontext = ({children}) => {
     const [User, setUser] = useState(null)
     const [userbooklist, setUserbooklist] = useState(null)
     const [isLoad, setIsload] = useState(true)
+    const [update, setUpdate] = useState(null)
 
     useEffect(()=>{
         const unSubscribe = onAuthStateChanged(Userauth, (user)=>{
@@ -42,10 +42,11 @@ const Userinfocontext = ({children}) => {
                 setUser(user)
                 setIsload(true)
                 setUserbooklist(null)
+                setUpdate(null)
             }
         })
         return () => unSubscribe()
-    },[])
+    },[update])
 
     // console.log(userbooklist)
     // console.log(isLoad)
@@ -61,7 +62,8 @@ const Userinfocontext = ({children}) => {
         setUser,
         LogOutUser,
         userbooklist,
-        setUserbooklist
+        setUserbooklist,
+        setUpdate
     }
 
     return (

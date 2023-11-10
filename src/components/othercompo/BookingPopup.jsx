@@ -12,7 +12,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 const BookingPopup = ({data}) => {
-  const {User} = Contextdata() 
+  const {User, setUpdate} = Contextdata() 
   const defaultOptions = (e) => ({
     loop: true,
     autoplay: true, 
@@ -87,6 +87,7 @@ const BookingPopup = ({data}) => {
                 height={60}
                 width={60}/>
               })
+              setUpdate("update")
             }
           })
         // console.log(data, User)

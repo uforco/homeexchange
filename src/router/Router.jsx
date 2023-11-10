@@ -10,6 +10,8 @@ import Dashboard from '../layout/Dashboarduser/Dashboard';
 import Addservice from '../page/Addservice/Addservice';
 import Allservices from '../layout/Allservices/Allservices';
 import Servicedetails from '../page/Singleservicedetails/Servicedetails';
+import Bookinglist from '../page/Bookmark/Bookinglist';
+import Myschedule from '../page/Myschedule/Myschedule';
 
 const Router = createBrowserRouter([
     {
@@ -35,7 +37,10 @@ const Router = createBrowserRouter([
         {
             path: "servicedetails/:id",
             element: <Servicedetails></Servicedetails>
-            
+        },
+        {
+            path: "bookinglist",
+            element: <Bookinglist></Bookinglist>
         }
       ]
     },
@@ -65,7 +70,7 @@ const Router = createBrowserRouter([
         },
         {
           path: "myschedule",
-          element: <h2>myschedule</h2>
+          element: <Myschedule></Myschedule>
         }
       ]
      

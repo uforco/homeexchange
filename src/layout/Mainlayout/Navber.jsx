@@ -1,6 +1,6 @@
 import Manu_item from "./Manu_item";
 import Logo from "./../../components/othercompo/Logo";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 // 'use client';
 import { MdFavoriteBorder } from "react-icons/md";
 import Usersintro from './../../components/user/Usersintro';
@@ -47,19 +47,20 @@ const Navber = () => {
         <div className=" hidden sm:block " >
           <div className=" flex justify-between items-center gap-5 " >
             <div>
-              <Link to="" >
-                <label className="btn btn-ghost btn-circle">
+                <NavLink to="/bookinglist" className={ ({isActive}) => isActive? "btn bg-gray-300 btn-ghost btn-circle" :  "btn btn-ghost btn-circle"}>
                   <div className="indicator">
                     <span className=" text-2xl font-bold " ><MdFavoriteBorder></MdFavoriteBorder></span>
                     {
                       userbooklist? 
-                        <span className="badge badge-sm indicator-item">{userbooklist? `${userbooklist?.length}` : 0}</span>
+                        userbooklist?.length === 0? 
+                          ""
+                        :
+                        <span className="badge badge-sm indicator-item">{userbooklist?.length}</span>
                       :
                       ""
                     }
                   </div>
-                </label>
-              </Link>
+                </NavLink>
             </div>
             <Usersintro></Usersintro>
           </div>
