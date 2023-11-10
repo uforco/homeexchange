@@ -5,9 +5,6 @@ import amint from "../../assets/icons/Animation-addservice2.json"
 import { PropTypes } from 'prop-types';
 
 const Singleserviceavator = ({data}) => {
-    console.log(data)
-
-
     const defaultOptions = {
         loop: false,
         autoplay: true, 

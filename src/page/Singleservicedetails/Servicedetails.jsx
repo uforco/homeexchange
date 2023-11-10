@@ -13,11 +13,11 @@ import LoaderAmnite from "../../assets/icons/LoaderAmnite.json"
 import { Toaster } from 'react-hot-toast';
 
 
-const Servicedetails = () => {
+
+const Servicedetails = () => { 
     const [data, setData] = useState(null)
     const [isLoad, setIsload] = useState(true)
     const {id} = useParams()
-
     const defaultOptions = {
         loop: true,
         autoplay: true, 
@@ -26,28 +26,26 @@ const Servicedetails = () => {
           preserveAspectRatio: 'xMidYMid slice'
         }
       }
-    // console.log(id)
-    // const { isPending, error, data }
-    // const qurtt = useQuery({
-    //     queryKey:[id],
-    //     queryFn: () => axios.get("/singelservice/654d1e129ce8f2a463e88964")
-    // })
-
    useEffect(()=>{
         axios.get(`/singelservice/${id}`)
         .then(res => {
             axios.get(`/prividerallservices/${res.data.providerEmail}`)
                 .then(pas => {
-                    console.log(pas.data.prividerservice)
+                    // console.log(pas.data.prividerservice)
                     if(pas.data){
                         setData({...res.data, allservice: pas.data.prividerservice})
                         setIsload(false)
                     }
-                })     
+                })
+            console.log(res)
         })
    },[])
 
-  console.log(data)
+
+ 
+
+
+//   console.log(data)
 
 
     return (
@@ -84,7 +82,7 @@ const Servicedetails = () => {
                                     </div>
                                     <div className=" px-4 w-full lg:w-3/12  border-l-0 overflow-hidden " >
                                         <Singleserviceavator data={data} ></Singleserviceavator>
-                                        <BookingPopup data={data} ></BookingPopup>
+                                        <BookingPopup data={data}  ></BookingPopup>
                                     </div>
                                 </div>
                             </div>

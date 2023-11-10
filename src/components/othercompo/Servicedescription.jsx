@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 const Servicedescription = ({ datainfo }) => {
-  console.log(datainfo);
+  // console.log(datainfo);
 
   return (
     <div className=" mb-8 ">
