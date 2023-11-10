@@ -47,7 +47,7 @@ const Singleserviceavator = ({data}) => {
                         <li><AiFillStar></AiFillStar></li>
                     </ul>
                     <h2 className=" font-semibold text-sm " >
-                        23 exchage
+                        {data?.UploadTime}
                     </h2>
                 </div>
 
