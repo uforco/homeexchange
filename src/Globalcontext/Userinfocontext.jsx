@@ -3,8 +3,16 @@ import { PropTypes } from 'prop-types';
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import Userauth from "../config/Firebaseconfig";
 import  axios  from 'axios';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+
+
+
 
 export const Usercontext = createContext()
+
+const queryClient = new QueryClient()
+
 const Userinfocontext = ({children}) => {
     const [User, setUser] = useState(null)
     const [isLoad, setIsload] = useState(true)
@@ -14,6 +22,7 @@ const Userinfocontext = ({children}) => {
             if(user){
                 if(user.displayName){
                     setIsload(false)
+                    setUser(user)
                 }
                 if(!user.displayName){
                     axios.get(`/userinfo?email=${user.email}`)
@@ -34,8 +43,8 @@ const Userinfocontext = ({children}) => {
         return () => unSubscribe()
     },[])
 
-    console.log(User)
-    console.log(isLoad)
+    // console.log(User)
+    // console.log(isLoad)
     // logout User
     const LogOutUser = () => {
         setIsload(!isLoad)
@@ -50,9 +59,11 @@ const Userinfocontext = ({children}) => {
     }
 
     return (
-        <Usercontext.Provider value={data} >
-            {children}
-        </Usercontext.Provider>
+        <QueryClientProvider client={queryClient}>
+            <Usercontext.Provider value={data} >
+                {children}
+            </Usercontext.Provider>
+        </QueryClientProvider>
     );
 };
 

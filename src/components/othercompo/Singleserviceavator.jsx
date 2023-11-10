@@ -2,8 +2,12 @@ import Lottie from "react-lottie";
 import img from "../../assets/icons/medal.png"
 import { AiFillStar } from "react-icons/ai";
 import amint from "../../assets/icons/Animation-addservice2.json" 
+import { PropTypes } from 'prop-types';
 
-const Singleserviceavator = () => {
+const Singleserviceavator = ({data}) => {
+    console.log(data)
+
+
     const defaultOptions = {
         loop: false,
         autoplay: true, 
@@ -18,18 +22,18 @@ const Singleserviceavator = () => {
                 <div className="  border-b " >
                     <div className="flex items-center py-10 gap-x-2">
                         <div className="relative">
-                            <img className="object-cover w-16 h-16 rounded-full ring ring-gray-300 dark:ring-gray-600" 
-                            src="https://i.ibb.co/KVgv6Yh/author10-1.jpg" alt=""></img>
+                            <img src={data?.providerPhoto} className="object-cover w-16 h-16 rounded-full ring ring-gray-300 dark:ring-gray-600" 
+                                 alt=""></img>
                             <span className="absolute -bottom-4 -right-3  rounded-full ">
                                 <img className=" w-10 " src={img} alt="" />
                             </span>
                         </div>
                         <div className=" px-3 " >
                             <h1 className="text-2xl font-DMSans font-semibold text-gray-700 capitalize dark:text-white">
-                                Mia John
+                                {data?.providerName}
                             </h1>
                             <p className="text-xs text-gray-500 dark:text-gray-400">
-                                23 Services
+                                {data?.allservice} Total Services
                             </p>
                         </div>
                     </div>
@@ -85,5 +89,9 @@ const Singleserviceavator = () => {
         </div>
     );
 };
+
+Singleserviceavator.propTypes = {
+    data: PropTypes.object
+}
 
 export default Singleserviceavator;

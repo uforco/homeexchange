@@ -9,11 +9,11 @@ import { Link } from "react-router-dom";
 
 const BookingPopup = () => {
 
-    const [travelform, setForm] = useState(new Date())
+    const [travelform, setForm] = useState(null)
     const formtime = (jsDate, dateString) => {
         setForm(dateString.toString().slice(0, 10))
       };
-    const [travleTo, setTravleto] = useState(new Date())
+    const [travleTo, setTravleto] = useState(null)
     const totime = (jsDate, dateString) => {
         setTravleto(dateString.toString().slice(0, 10))
       };
