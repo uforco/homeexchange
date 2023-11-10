@@ -31,15 +31,13 @@ const Servicedetails = () => {
         .then(res => {
             axios.get(`/prividerallservices/${res.data.providerEmail}`)
                 .then(pas => {
-                    // console.log(pas.data.prividerservice)
                     if(pas.data){
                         setData({...res.data, allservice: pas.data.prividerservice})
                         setIsload(false)
                     }
                 })
-            console.log(res)
         })
-   },[])
+   },[id])
 
 
  

@@ -2,10 +2,13 @@ import Manu_item from "./Manu_item";
 import Logo from "./../../components/othercompo/Logo";
 import { Link } from "react-router-dom";
 // 'use client';
-// import { Avatar } from 'flowbite-react';
+import { MdFavoriteBorder } from "react-icons/md";
 import Usersintro from './../../components/user/Usersintro';
+import Contextdata from "../../hooks/Contexthook";
 
 const Navber = () => {
+  const{userbooklist} = Contextdata()
+
   return (
     <div className=" overflow-hidden xl:container p-0 xl:mx-auto ">
       <div className="w-full gap-3 navbar ">
@@ -47,8 +50,13 @@ const Navber = () => {
               <Link to="" >
                 <label className="btn btn-ghost btn-circle">
                   <div className="indicator">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                    <span className="badge badge-sm indicator-item">8</span>
+                    <span className=" text-2xl font-bold " ><MdFavoriteBorder></MdFavoriteBorder></span>
+                    {
+                      userbooklist? 
+                        <span className="badge badge-sm indicator-item">{userbooklist? `${userbooklist?.length}` : 0}</span>
+                      :
+                      ""
+                    }
                   </div>
                 </label>
               </Link>

@@ -6,15 +6,13 @@ import  axios  from 'axios';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 
-
-
-
 export const Usercontext = createContext()
 
 const queryClient = new QueryClient()
 
 const Userinfocontext = ({children}) => {
     const [User, setUser] = useState(null)
+    const [userbooklist, setUserbooklist] = useState(null)
     const [isLoad, setIsload] = useState(true)
 
     useEffect(()=>{
@@ -33,17 +31,23 @@ const Userinfocontext = ({children}) => {
                             setIsload(false)
                         })
                 }
-
+                axios.get(`/customerbookinglist?email=${user.email}`)
+                .then(blist => {
+                    if(blist.data){
+                        setUserbooklist(blist.data)
+                    }
+                })
             }
             if(!user){
                 setUser(user)
                 setIsload(true)
+                setUserbooklist(null)
             }
         })
         return () => unSubscribe()
     },[])
 
-    // console.log(User)
+    // console.log(userbooklist)
     // console.log(isLoad)
     // logout User
     const LogOutUser = () => {
@@ -55,7 +59,9 @@ const Userinfocontext = ({children}) => {
         setIsload,
         User,
         setUser,
-        LogOutUser
+        LogOutUser,
+        userbooklist,
+        setUserbooklist
     }
 
     return (
