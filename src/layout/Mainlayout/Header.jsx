@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className=" bg-slate-600 " >
+    <div className=" bg-slate-600 hidden md:block " >
       <div className=" w-full  overflow-hidden xl:container p-0 xl:mx-auto ">
         <div className=" mx-3 py-1" >
           <div className=" flex justify-between items-center ">
@@ -23,7 +23,7 @@ const Header = () => {
                   <span className=" text-lg p-2 ">
                     <AiOutlineMail></AiOutlineMail>
                   </span>{" "}
-                  yummy@bistrobliss{" "}
+                  homeexchange@bistrobliss{" "}
                 </p>
               </div>
             </div>

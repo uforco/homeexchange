@@ -14,7 +14,6 @@ const Home = () => {
              <Ab_header></Ab_header>
              <Event_place_exchange></Event_place_exchange>
              <Fastest_exchange_place_City></Fastest_exchange_place_City>
-             <div className=' bg-lime-400 w-full h-60 ' ></div>
              <Our_Customers_Say></Our_Customers_Say>
         </div>
     );

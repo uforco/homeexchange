@@ -12,8 +12,6 @@ import  Lottie  from 'react-lottie';
 import LoaderAmnite from "../../assets/icons/LoaderAmnite.json"
 import { Toaster } from 'react-hot-toast';
 
-
-
 const Servicedetails = () => { 
     const [data, setData] = useState(null)
     const [isLoad, setIsload] = useState(true)
@@ -39,12 +37,7 @@ const Servicedetails = () => {
         })
    },[id])
 
-
- 
-
-
 //   console.log(data)
-
 
     return (
         isLoad? 

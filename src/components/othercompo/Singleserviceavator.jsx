@@ -47,7 +47,7 @@ const Singleserviceavator = ({data}) => {
                         {data?.UploadTime}
                     </h2>
                 </div>
-
+                <p className=" text-2xl py-3 pt-0 font-semibold font-DMSans " >$ { data?.servicePrice}</p>
                 <div className=" flex flex-col gap-3 " >
                     <div className=" flex justify-start gap-3 items-center " >
                         <span>

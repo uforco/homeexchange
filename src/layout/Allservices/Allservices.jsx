@@ -1,5 +1,19 @@
+import { useEffect, useState } from "react";
 import Services from "./../../components/Services/Services";
+import axios from "axios";
 const Allservices = () => {
+  const[ allservice, setAllservice ] = useState(null)
+  useEffect(()=>{
+    axios.get("/allservice")
+      .then(res => {
+        setAllservice(res.data)
+      })
+  },[])
+
+
+
+
+
   return (
     <div>
       <div className=" w-full xl:container  mx-auto ">
@@ -18,17 +32,9 @@ const Allservices = () => {
         <div className=" w-full  h-full flex justify-center items-center ">
           <div className=" px-2 lg:px-0 py-14 ">
             <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-5">
-              <Services></Services>
-              <Services></Services>
-              <Services></Services>
-              <Services></Services>
-              <Services></Services>
-              <Services></Services>
-              <Services></Services>
-              <Services></Services>
-              <Services></Services>
-              <Services></Services>
-              <Services></Services>
+              {
+                allservice?.map((data, idx) => <Services key={idx} data={data} ></Services> )
+              }
             </div>
           </div>
         </div>

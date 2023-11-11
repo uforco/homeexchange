@@ -20,14 +20,19 @@ const Bookinglist = () => {
         <div className=" w-full " >
             <Toaster></Toaster>
             <div className=" mx-1 overflow-hidden w-full xl:container xl:mx-auto " >
-                
+        
                 {
                     !userbooklist || userbooklist?.length < 1? 
                         <div className=" w-full h-[500px] overflow-hidden " >
-                            <div className=" mb-5 " >
+                            <div className=" md:block mb-5 " >
                                 <Lottie options={defaultOptions(booking)}
                                 height={600}
                                 width={600}/>
+                            </div>
+                            <div className="block md:hidden mb-5 " >
+                                <Lottie options={defaultOptions(booking)}
+                                height={300}
+                                width={300}/>
                             </div>
                         </div>
                     :

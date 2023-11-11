@@ -19,7 +19,7 @@ const Rightsite = () => {
         </p>
       </div>
       <div className=' py-8 ' >
-        <Link>
+        <Link to="/about" >
           <button className=" p-4 px-7 rounded-full hover:border-red-600 hover:text-red-600 font-semibold border-black border ">More About Us</button>
         </Link>
       </div>

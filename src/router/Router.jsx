@@ -13,6 +13,8 @@ import Servicedetails from '../page/Singleservicedetails/Servicedetails';
 import Bookinglist from '../page/Bookmark/Bookinglist';
 import Myschedule from '../page/Myschedule/Myschedule';
 import DHome from '../page/Dashboardhome/DHome';
+import Isuser from '../Private/Isuser';
+import Blockroute from '../Private/blockroute';
 
 const Router = createBrowserRouter([
     {
@@ -33,29 +35,29 @@ const Router = createBrowserRouter([
         },
         {
             path: "services",
-            element: <Allservices></Allservices>
+            element: <Isuser><Allservices></Allservices></Isuser>
         },
         {
             path: "servicedetails/:id",
-            element: <Servicedetails></Servicedetails>
+            element: <Isuser><Servicedetails></Servicedetails></Isuser>
         },
         {
             path: "bookinglist",
-            element: <Bookinglist></Bookinglist>
+            element: <Isuser><Bookinglist></Bookinglist></Isuser>
         }
       ]
     },
     {
       path: "/login",
-      element: <Login></Login>
+      element: <Blockroute><Login></Login></Blockroute> 
     },
     {
       path: "/registration",
-      element: <Registration></Registration>
+      element: <Blockroute><Registration></Registration></Blockroute> 
     },
     {
       path: "/dashboard",
-      element : <Dashboard></Dashboard>,
+      element : <Isuser><Dashboard></Dashboard></Isuser>,
       children:[
         {
           index: true,
@@ -63,19 +65,19 @@ const Router = createBrowserRouter([
         },
         {
           path: "addservice",
-          element: <Addservice></Addservice>
+          element: <Isuser><Addservice></Addservice></Isuser>
         },
         {
           path: "manageservices",
-          element: <h2>manageservices</h2>
+          element: <Isuser><h2>manageservices</h2></Isuser>
         },
         {
           path: "inbox",
-          element: <h2>inbox</h2>
+          element: <Isuser><h2>inbox</h2></Isuser>
         },
         {
           path: "myschedule",
-          element: <Myschedule ></Myschedule>
+          element:  <Isuser><Myschedule ></Myschedule></Isuser>
         }
       ]
      
