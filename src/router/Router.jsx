@@ -12,6 +12,7 @@ import Allservices from '../layout/Allservices/Allservices';
 import Servicedetails from '../page/Singleservicedetails/Servicedetails';
 import Bookinglist from '../page/Bookmark/Bookinglist';
 import Myschedule from '../page/Myschedule/Myschedule';
+import DHome from '../page/Dashboardhome/DHome';
 
 const Router = createBrowserRouter([
     {
@@ -56,6 +57,10 @@ const Router = createBrowserRouter([
       path: "/dashboard",
       element : <Dashboard></Dashboard>,
       children:[
+        {
+          index: true,
+          element: <DHome></DHome>
+        },
         {
           path: "addservice",
           element: <Addservice></Addservice>
