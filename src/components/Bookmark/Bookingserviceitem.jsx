@@ -58,7 +58,7 @@ const Bookingserviceitem = ({data}) => {
           </div>
         </td>
         <td>{data?.tarvelDate}</td>
-        <td><span className=' bg-amber-500 text-black rounded-full font-semibold capitalize p-1 px-2 ' >
+        <td><span className={` ${data?.bookingStatus === "reject" ? "bg-red-500" : data?.bookingStatus === "accept"? " bg-green-500 " : "bg-amber-500" }  text-black rounded-full font-semibold capitalize p-1 px-2 `} >
             {data?.bookingStatus}
             </span>
         </td>

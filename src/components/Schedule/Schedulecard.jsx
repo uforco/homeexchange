@@ -2,17 +2,17 @@ import { Link } from "react-router-dom";
 import { PropTypes } from 'prop-types';
 import axios from "axios";
 
-const Schedulecard = ({data}) => {
-
+const Schedulecard = ({data, setBookingstatus}) => {
     const bookingstatus = (e) => {
         const cdata = { bookingid: data?._id, bookingStatus: e.target.value}
         axios.put("/schedulestatus", cdata)
-            .then(res => console.log(res.data))
+            .then(res => {
+                if(res.data.acknowledged){
+                    setBookingstatus(e.target.value)
+                }
+            })
     }
-    console.log(data)
-
-
-      return (
+    return (
     <>
       <tr>
         <td className=" pb-6 sm:pb-1" >
@@ -34,7 +34,7 @@ const Schedulecard = ({data}) => {
             </div>
           </div>
         </td>
-        <td>{data?.customerName}</td>
+        <td className=" hidden sm:block " >{data?.customerName}</td>
         <td>
             <p className='capitalize mb-1 font-medium font-DMSans ' >
               Service Date : {data?.tarvelDate}
@@ -49,8 +49,8 @@ const Schedulecard = ({data}) => {
             </Link>
         </td>
         <th>
-            <select onChange={bookingstatus} defaultValue={"pending"} className=" capitalize text-sm p-1 px-3 rounded-lg focus:border-0 focus:border-white ">
-                <option value="pending" className="px-2" >Pandding</option>
+            <select onChange={bookingstatus} defaultValue={data?.bookingStatus} className=" capitalize text-sm p-1 px-3 rounded-lg focus:border-0 focus:border-white ">
+                <option value="pending" className="px-2" >Panding</option>
                 <option value="accept" className="px-2" >Accept</option>
                 <option value="reject" className="px-2" >Reject</option>
             </select>
@@ -62,7 +62,8 @@ const Schedulecard = ({data}) => {
 
 
 Schedulecard.propTypes = {
-    data: PropTypes.object
+    data: PropTypes.object,
+    setBookingstatus: PropTypes.func
 }
 
 export default Schedulecard;
