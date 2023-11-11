@@ -12,7 +12,7 @@ const Bookingitem = () => {
           {/* head */}
           <thead >
             <tr  >
-              <th>Provider Name</th>
+              <th>Service Name</th>
               <th>Service Date</th>
               <th>Status</th>
               <th>Show Details</th>

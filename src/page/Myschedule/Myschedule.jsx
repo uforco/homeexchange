@@ -1,7 +1,10 @@
-import axios from "axios";
-import { useEffect } from "react";
+
+import Scheduleitem from './../../components/Schedule/Scheduleitem';
 
 const Myschedule = () => {
+
+
+
   // !userbooklist || userbooklist?.length < 1?
   // <div className=" w-full h-[500px] overflow-hidden " >
   //     <div className=" mb-5 " >
@@ -11,49 +14,22 @@ const Myschedule = () => {
   //     </div>
   // </div>
 
-  useEffect(()=>{
-    axios.get("")
-
-
-  },[])
+//   useEffect(()=>{
+//     axios.get(`/myschedule?providerEmail=${User?.email}`)
+//         .then(res =>{ console.log(res.data) })
+//   },[])
 
 
 
 
   return (
-    <div>
-      <div>
-        <div>
-
-
-
-
-
-
-
-
-
-          <div className=" w-full ">
-            <div className=" mx-1 overflow-hidden w-full xl:container xl:mx-auto ">
-                <div className="px-3 sm:px-10 ">
-                    {/* containet */}
+        <div className=" px-3 w-full h-full " >
+          <div className=" w-full h-full  ">
+                <div className="px-1 pt-2 w-full h-full scrollbar-hide overflow-y-scroll">
+                    <Scheduleitem></Scheduleitem>
                 </div>
-            </div>
           </div>
-
-
-
-
-
-
-
-
-
-
-
         </div>
-      </div>
-    </div>
   );
 };
 

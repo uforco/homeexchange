@@ -74,7 +74,7 @@ const BookingPopup = ({data}) => {
           customerName : User.displayName,
           customerEmail : User.email,
           bookingDate, tarvelDate: tarvelform,
-          bookingStatus: "pendding" 
+          bookingStatus: "pending" 
         }
         axios.post("/booking", bookingdata)
           .then(res => {

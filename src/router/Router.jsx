@@ -70,7 +70,7 @@ const Router = createBrowserRouter([
         },
         {
           path: "myschedule",
-          element: <Myschedule></Myschedule>
+          element: <Myschedule ></Myschedule>
         }
       ]
      

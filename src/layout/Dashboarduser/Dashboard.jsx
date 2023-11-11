@@ -15,7 +15,7 @@ const Dashboard = () => {
             <div className=" w-full z-20 bg-white scrollbar-hide overflow-hidden ">
               <div className="h-[99vh] scrollbar-hide w-full border-l " >
                 <div className=" w-full h-full " >
-                  <Outlet></Outlet>
+                  <Outlet ></Outlet>
                 </div>
               </div>
               

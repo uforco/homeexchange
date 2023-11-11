@@ -18,6 +18,7 @@ export default {
     require("daisyui"),
     require('preline/plugin'),
     require('flowbite/plugin'),
+    require('tailwind-scrollbar-hide')
   ],
   daisyui: {
     themes: ["emerald"],

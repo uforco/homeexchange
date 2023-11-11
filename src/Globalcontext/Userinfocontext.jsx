@@ -3,11 +3,8 @@ import { PropTypes } from 'prop-types';
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import Userauth from "../config/Firebaseconfig";
 import  axios  from 'axios';
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export const Usercontext = createContext()
-
-const queryClient = new QueryClient()
 
 const Userinfocontext = ({children}) => {
     const [User, setUser] = useState(null)
@@ -67,11 +64,10 @@ const Userinfocontext = ({children}) => {
     }
 
     return (
-        <QueryClientProvider client={queryClient}>
             <Usercontext.Provider value={data} >
                 {children}
             </Usercontext.Provider>
-        </QueryClientProvider>
+       
     );
 };
 

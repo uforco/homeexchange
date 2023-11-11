@@ -121,7 +121,7 @@ const Addservice = () => {
                 <img src="https://i.ibb.co/rxGwM85/undraw-Updates-re-o5af.png" alt="" />
             </div>
         </div>
-      <div className=" overflow-y-scroll w-full h-full py-10 ">
+      <div className=" overflow-y-scroll scrollbar-hide w-full h-full py-10 ">
         <div>
           <div>
             <section className=" p-6 mx-auto rounded-md ">
