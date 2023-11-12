@@ -108,7 +108,7 @@ const Dashbordmanu = () => {
               </Sidebar.Item>
             </Link>
 
-            <div onClick={LogOut} >
+            <div className=" cursor-pointer " onClick={LogOut} >
               <Sidebar.Item icon={FiPower}>
                 <span className=" hidden sm:block " >Sign Out</span>
               </Sidebar.Item>

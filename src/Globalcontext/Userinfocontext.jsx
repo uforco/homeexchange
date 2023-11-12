@@ -10,14 +10,18 @@ const Userinfocontext = ({children}) => {
     const [User, setUser] = useState(null)
     const [userbooklist, setUserbooklist] = useState(null)
     const [isLoad, setIsload] = useState(true)
+    const [isuserload, setisuserload] = useState(false)
+    
     const [update, setUpdate] = useState(null)
 
     useEffect(()=>{
         const unSubscribe = onAuthStateChanged(Userauth, (user)=>{
             if(user){
+
                 if(user.displayName){
-                    setIsload(false)
                     setUser(user)
+                    setIsload(false)
+                    setisuserload(false)
                 }
                 if(!user.displayName){
                     axios.get(`/userinfo?email=${user.email}`)
@@ -26,6 +30,7 @@ const Userinfocontext = ({children}) => {
                             user.photoURL = res.data.PhotoLink
                             setUser(user)
                             setIsload(false)
+                            setisuserload(false)
                         })
                 }
                 axios.get(`/customerbookinglist?email=${user.email}`)
@@ -34,10 +39,12 @@ const Userinfocontext = ({children}) => {
                         setUserbooklist(blist.data)
                     }
                 })
+                
             }
             if(!user){
                 setUser(user)
                 setIsload(true)
+                setisuserload(false)
                 setUserbooklist(null)
                 setUpdate(null)
             }
@@ -45,7 +52,19 @@ const Userinfocontext = ({children}) => {
         return () => unSubscribe()
     },[update])
 
-    // console.log(userbooklist)
+    console.log(User)
+    // if(User)
+    // const loginnavigate = useNavigate()
+    // const isuserlod = () => {
+    //     console.log(User)
+    //     if(!User){
+    //         console.log
+
+    //     }
+        
+    // }
+
+
     // console.log(isLoad)
     // logout User
     const LogOutUser = () => {
@@ -60,7 +79,9 @@ const Userinfocontext = ({children}) => {
         LogOutUser,
         userbooklist,
         setUserbooklist,
-        setUpdate
+        setUpdate,
+        isuserload
+        
     }
 
     return (

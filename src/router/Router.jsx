@@ -13,13 +13,15 @@ import Servicedetails from '../page/Singleservicedetails/Servicedetails';
 import Bookinglist from '../page/Bookmark/Bookinglist';
 import Myschedule from '../page/Myschedule/Myschedule';
 import DHome from '../page/Dashboardhome/DHome';
-import Isuser from '../Private/Isuser';
-import Blockroute from '../Private/blockroute';
+import PrivateRoute from './PrivateRoute';
+import ManageServices from '../page/ManageService/ManageServices';
+import BlockRoute from './BlockRoute';
 
 const Router = createBrowserRouter([
     {
       path: "/",
       element: <Mainlayout></Mainlayout>,
+      errorElement: <h2> 404 </h2>,
       children: [
         {
             index: true,
@@ -35,29 +37,29 @@ const Router = createBrowserRouter([
         },
         {
             path: "services",
-            element: <Isuser><Allservices></Allservices></Isuser>
+            element: <PrivateRoute><Allservices></Allservices></PrivateRoute>
         },
         {
             path: "servicedetails/:id",
-            element: <Isuser><Servicedetails></Servicedetails></Isuser>
+            element: <PrivateRoute><Servicedetails></Servicedetails></PrivateRoute>
         },
         {
             path: "bookinglist",
-            element: <Isuser><Bookinglist></Bookinglist></Isuser>
+            element: <PrivateRoute><Bookinglist></Bookinglist></PrivateRoute>
         }
       ]
     },
     {
       path: "/login",
-      element: <Blockroute><Login></Login></Blockroute> 
+      element: <BlockRoute><Login></Login></BlockRoute> 
     },
     {
       path: "/registration",
-      element: <Blockroute><Registration></Registration></Blockroute> 
+      element: <><Registration></Registration></> 
     },
     {
       path: "/dashboard",
-      element : <Isuser><Dashboard></Dashboard></Isuser>,
+      element : <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children:[
         {
           index: true,
@@ -65,19 +67,19 @@ const Router = createBrowserRouter([
         },
         {
           path: "addservice",
-          element: <Isuser><Addservice></Addservice></Isuser>
+          element: <PrivateRoute><Addservice></Addservice></PrivateRoute>
         },
         {
           path: "manageservices",
-          element: <Isuser><h2>manageservices</h2></Isuser>
+          element: <PrivateRoute><ManageServices></ManageServices></PrivateRoute>
         },
         {
           path: "inbox",
-          element: <Isuser><h2>inbox</h2></Isuser>
+          element: <PrivateRoute><h2>inbox</h2></PrivateRoute>
         },
         {
           path: "myschedule",
-          element:  <Isuser><Myschedule ></Myschedule></Isuser>
+          element:  <PrivateRoute><Myschedule ></Myschedule></PrivateRoute>
         }
       ]
      
