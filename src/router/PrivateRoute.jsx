@@ -5,7 +5,6 @@ import Contextdata from '../hooks/Contexthook';
 import { PropTypes } from 'prop-types';
 const PrivateRoute = ({children}) => {
      const {User, isuserload} = Contextdata()
-    console.log(isuserload)
      if (isuserload) {
         return <div className="progress w-full"></div>;
       }

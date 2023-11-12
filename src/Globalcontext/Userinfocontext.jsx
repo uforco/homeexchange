@@ -51,22 +51,6 @@ const Userinfocontext = ({children}) => {
         })
         return () => unSubscribe()
     },[update])
-
-    console.log(User)
-    // if(User)
-    // const loginnavigate = useNavigate()
-    // const isuserlod = () => {
-    //     console.log(User)
-    //     if(!User){
-    //         console.log
-
-    //     }
-        
-    // }
-
-
-    // console.log(isLoad)
-    // logout User
     const LogOutUser = () => {
         setIsload(!isLoad)
         return signOut(Userauth)
