@@ -35,6 +35,7 @@ const ManageServices = () => {
           <tr>
             <th className=" text-center ">Service Name</th>
             <th className=" text-center ">Upload Date</th>
+            <th className=" text-center ">Last Update</th>
             <th className=" text-center ">Service Details</th>
             <th className=" text-center "></th>
           </tr>

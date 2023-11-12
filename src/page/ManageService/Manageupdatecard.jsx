@@ -41,6 +41,7 @@ const Manageupdatecard = ({ data, setUpdate }) => {
           </div>
         </td>
         <td className=" text-center ">{data?.UploadTime}</td>
+        <td className=" text-center ">{data?.update}</td>
         <td className=" text-center ">
           <Link to={`/servicedetails/${data?._id}`}>
             <button className="btn btn-ghost btn-xs">details</button>

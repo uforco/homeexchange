@@ -1,20 +1,30 @@
 import { useEffect, useState } from "react";
 import Services from "./../../components/Services/Services";
 import axios from "axios";
+import Loader from "../../components/othercompo/Loader";
+import loaderd from "../../assets/icons/LoaderAmnite.json";
+import datafound from "../../assets/icons/datanotfound.json";
+
 const Allservices = () => {
-  const[ allservice, setAllservice ] = useState(null)
-  useEffect(()=>{
-    axios.get("/allservice")
-      .then(res => {
-        setAllservice(res.data)
-      })
-  },[])
-
-
-
-
-
-  return (
+  const [allservice, setAllservice] = useState(null);
+  useEffect(() => {
+    axios.get("/allservice").then((res) => {
+      setAllservice(res.data);
+    });
+  }, []);
+  return !allservice ? (
+    <div className=" flex justify-center items-center w-full h-screen overflow-hidden ">
+      <div>
+        <Loader name={loaderd} wh={100}></Loader>
+      </div>
+    </div>
+  ) : allservice?.length < 1 ? (
+    <div className=" flex justify-center items-center w-full h-screen overflow-hidden ">
+      <div>
+        <Loader name={datafound} wh={300}></Loader>
+      </div>
+    </div>
+  ) : (
     <div>
       <div className=" w-full xl:container  mx-auto ">
         <div>
@@ -32,9 +42,9 @@ const Allservices = () => {
         <div className=" w-full  h-full flex justify-center items-center ">
           <div className=" px-2 lg:px-0 py-14 ">
             <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-5">
-              {
-                allservice?.map((data, idx) => <Services key={idx} data={data} ></Services> )
-              }
+              {allservice?.map((data, idx) => (
+                <Services key={idx} data={data}></Services>
+              ))}
             </div>
           </div>
         </div>

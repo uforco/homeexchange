@@ -27,12 +27,7 @@ const Bannerhero = () => {
                   </h2>
                   <div>
                     <div className=" flex gap-3 sm:gap-6 mt-2 sm:mt-7 justify-center ">
-                      <Link>
-                        <button className=" font-medium px-4 p-2 sm:px-6 sm:p-3 text-xs sm:text-base font-DMSans border text-white bg-[#AD343E] border-[#AD343E] rounded-full  hover:text-white hover:bg-transparent hover:border-white ">
-                          Book A Service
-                        </button>
-                      </Link>
-                      <Link>
+                      <Link to="/services" >
                         <button className=" font-medium px-4 p-2 sm:px-6 sm:p-3 text-xs sm:text-base font-DMSans border text-white bg-transparent border-white rounded-full  hover:text-white hover:bg-[#AD343E] hover:border-[#AD343E]">
                           Explore Services
                         </button>
