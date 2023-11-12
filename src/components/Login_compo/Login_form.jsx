@@ -1,58 +1,69 @@
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { Link, useNavigate } from 'react-router-dom';
-import Userauth from '../../config/Firebaseconfig';
-import toast from 'react-hot-toast';
-import Swal from 'sweetalert2';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { Link, useNavigate } from "react-router-dom";
+import Userauth from "../../config/Firebaseconfig";
+import toast from "react-hot-toast";
 import { FaEyeSlash, FaEye } from "react-icons/fa6";
-import { useState } from 'react';
+import { useState } from "react";
+import axios from "axios";
+import Loader from "../othercompo/Loader";
+import Verify from "../../assets/icons/Verify.json";
 
 const Login_form = () => {
-  const [showpass, setShowpass] = useState(true)
-  const Navigatelogin = useNavigate()
+  const [showpass, setShowpass] = useState(true);
+  const Navigatelogin = useNavigate();
   const loginhenld = (e) => {
     e.preventDefault();
-    const email = e.target.email.value
-    const password = e.target.password.value
-    if(!email){
-      return toast.error("fill this Email")
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    if (!email) {
+      return toast.error("fill this Email");
     }
-    if(!password){
-      return toast.error("fill this password")
-    }else{
-      if(!/(?=.*?[A-Z])/.test(password.slice(0,1))){
-        return toast.error("The first letter of the password must be uppercase")
+    if (!password) {
+      return toast.error("fill this password");
+    } else {
+      if (!/(?=.*?[A-Z])/.test(password.slice(0, 1))) {
+        return toast.error(
+          "The first letter of the password must be uppercase"
+        );
       }
-      if(!/(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])/.test(password)){
-        return toast.error("Password must contain numbers")
-      }if(!/(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/.test(password)){
-        return toast.error("Password must contain special characters")
+      if (!/(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])/.test(password)) {
+        return toast.error("Password must contain numbers");
       }
-      if(password.length < 6){
-        return toast.error("Password must be 6 characters long")
+      if (
+        !/(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/.test(
+          password
+        )
+      ) {
+        return toast.error("Password must contain special characters");
+      }
+      if (password.length < 6) {
+        return toast.error("Password must be 6 characters long");
       }
       signInWithEmailAndPassword(Userauth, email, password)
         .then((userCredential) => {
           // console.log(userCredential.user)
-          if(userCredential.user){
-            Swal.fire(
-              'Successfull Login',
-              '',
-              'success'
-            )
-            e.target.email.value = ""
-            e.target.password.value = ""
-            Navigatelogin("/")
+          if (userCredential.user) {
+            e.target.email.value = "";
+            e.target.password.value = "";
+            Navigatelogin("/");
+            axios.post("/loginuser", {email:userCredential.user.email}).then((res) => {
+              if (res.data.Verify) {
+                  toast("Welcome to Home Exchange", {
+                    icon: <Loader name={Verify} wh={50}></Loader>,
+                  });
+              }
+            });
           }
         })
         .catch((error) => {
           // console.error(error)
           // console.log(error)
-          if(error){
-            return toast.error('login info is incorrect', {
-              position: "top-center"
-            })
+          if (error) {
+            return toast.error("login info is incorrect", {
+              position: "top-center",
+            });
           }
-      });
+        });
     }
   };
   return (
@@ -73,7 +84,7 @@ const Login_form = () => {
       </div>
 
       <div className="mt-4">
-        <div className=' relative ' >
+        <div className=" relative ">
           <label
             htmlFor="Password"
             className="block text-sm text-black font-medium dark:text-gray-200"
@@ -83,31 +94,26 @@ const Login_form = () => {
           <input
             required
             name="password"
-            type={ showpass? "password" : "text" }
+            type={showpass ? "password" : "text"}
             className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
           />
-            <span onClick={()=> setShowpass(!showpass)} className=" cursor-pointer absolute right-0 text-xl bottom-2 text-gray-700 p-2 py-1 " >
-                {
-                  showpass? 
-                    <FaEye></FaEye>
-                  :
-                    <FaEyeSlash></FaEyeSlash>
-                }
-            </span>
-        </div>
-
-        
-      </div>
-
-      <div className='mt-3' >
-        <Link
-            to=""
-            className="text-xs mt-1 flex justify-end text-black dark:text-gray-400 hover:underline"
+          <span
+            onClick={() => setShowpass(!showpass)}
+            className=" cursor-pointer absolute right-0 text-xl bottom-2 text-gray-700 p-2 py-1 "
           >
-            Forget Password?
-          </Link>
+            {showpass ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>}
+          </span>
+        </div>
       </div>
 
+      <div className="mt-3">
+        <Link
+          to=""
+          className="text-xs mt-1 flex justify-end text-black dark:text-gray-400 hover:underline"
+        >
+          Forget Password?
+        </Link>
+      </div>
 
       <div className="mt-6">
         <button

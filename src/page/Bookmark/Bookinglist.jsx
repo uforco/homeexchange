@@ -2,7 +2,6 @@ import Lottie from "react-lottie";
 import booking from "../../assets/icons/booknow.json"
 import Contextdata from "../../hooks/Contexthook";
 import Bookingitem from './../../components/Bookmark/Bookingitem';
-import { Toaster } from 'react-hot-toast';
 const Bookinglist = () => {
     const defaultOptions = (e) => ({
         loop: true,
@@ -18,7 +17,6 @@ const Bookinglist = () => {
 
     return (
         <div className=" w-full " >
-            <Toaster></Toaster>
             <div className=" mx-1 overflow-hidden w-full xl:container xl:mx-auto " >
         
                 {

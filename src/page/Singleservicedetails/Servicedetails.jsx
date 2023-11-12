@@ -10,7 +10,6 @@ import { useEffect, useState } from 'react';
 // import { useState } from 'react';
 import  Lottie  from 'react-lottie';
 import LoaderAmnite from "../../assets/icons/LoaderAmnite.json"
-import { Toaster } from 'react-hot-toast';
 
 const Servicedetails = () => { 
     const [data, setData] = useState(null)
@@ -51,7 +50,6 @@ const Servicedetails = () => {
         </div>
         :
         <div className="  w-full pt-2 ">
-            <Toaster></Toaster>
             <div className="w-full xl:container border-x mx-auto overflow-hidden" >
                 <div className=' border-b ' >
                     <div className=" w-full flex justify-center items-center " >

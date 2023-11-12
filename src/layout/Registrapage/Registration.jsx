@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/houselogo.png";
 import Registration_form from "./../../components/Registration_compo/Registration_form";
-import { Toaster } from 'react-hot-toast';
 
 const Registration = () => {
   return (
     <div className=' bg-[url("https://i.ibb.co/L9hQ5CB/login.jpg")]  bg-cover' >
-      <Toaster></Toaster>
       <div className=" w-full h-screen backdrop-blur-sm  bg-opacity-40 flex items-center justify-center " >
         <div className=" w-full " >
           <section className=" dark:bg-gray-900">

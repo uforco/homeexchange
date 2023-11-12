@@ -1,11 +1,9 @@
 import Dashbordmanu from "./../../components/Dashbord_compo/Dashbordmanu";
 import { Outlet } from "react-router-dom";
-import { Toaster } from 'react-hot-toast';
 const Dashboard = () => {
 
   return (
     <div className=" relative w-full" >
-      <Toaster position="top-right" ></Toaster>
       <div className=" w-full border 2xl:container mx-auto ">
         <div className="  scrollbar-hide w-full overflow-hidden ">
           <div className=" flex w-full ">

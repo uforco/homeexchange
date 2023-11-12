@@ -2,11 +2,9 @@ import { Link } from 'react-router-dom';
 import Login_form from './../../components/Login_compo/Login_form';
 import Social_media from './../../components/Login_compo/Social_media';
 import logo from "../../assets/houselogo.png"
-import { Toaster } from 'react-hot-toast';
 const Login = () => {
   return (
     <div className=' bg-[url("https://i.ibb.co/L9hQ5CB/login.jpg")]  bg-cover' >
-      <Toaster></Toaster>
       <div className=" w-full h-screen backdrop-blur-sm  bg-opacity-40 flex items-center justify-center " >
         <div className=" w-full " >
           <div className="w-full max-w-sm p-6 m-auto mx-auto bg-gray-500 text-white bg-opacity-40 rounded-lg shadow-md dark:bg-gray-800">

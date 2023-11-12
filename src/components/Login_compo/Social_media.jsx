@@ -3,6 +3,10 @@ import { FaFacebookF } from "react-icons/fa6";
 import Userauth from "../../config/Firebaseconfig";
 import { useNavigate } from "react-router-dom";
 import Contextdata from "../../hooks/Contexthook";
+import axios from "axios";
+import toast from "react-hot-toast";
+import Loader from "../othercompo/Loader";
+import Verify from "../../assets/icons/Verify.json";
 const Social_media = () => {
   const provider = new GoogleAuthProvider();
   const {isLoad, setIsload } = Contextdata()
@@ -10,9 +14,17 @@ const Social_media = () => {
   const googleLogin = () => {
     signInWithPopup(Userauth, provider)
     .then((result) => {
+      console.log(result)
       if(result){
         setIsload(!isLoad)
         getNavigate("/")
+        axios.post("/loginuser", {email:result.user.email}).then((res) => {
+          if (res.data.Verify) {
+              toast("Welcome to Home Exchange", {
+                icon: <Loader name={Verify} wh={50}></Loader>,
+              });
+          }
+        });
       }
     })
   }
