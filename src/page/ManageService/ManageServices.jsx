@@ -17,7 +17,7 @@ const ManageServices = () => {
     });
   }, [User, update]);
   return (
-    <div>
+    <div className=" w-full h-full " >
       <Helmattitle title={"Home Exchage | Dashboard - Manage services"}></Helmattitle>
       {!providerAllServices ? (
         <div className=" flex justify-center items-center w-full h-full overflow-hidden ">

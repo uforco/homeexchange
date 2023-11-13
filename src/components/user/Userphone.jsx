@@ -26,11 +26,11 @@ const Userphone = () => {
           rounded
           bordered
         />
-        <h2 className=" text-black font-semibold text-xl ">
+        <h2 className=" text-black font-semibold text-base ">
           {!isLoad ? User?.displayName : "guest"}
         </h2>
       </div>
-      <div className=" flex gap-5 ">
+      <div className=" flex gap-2 ">
         <NavLink
           to="/bookinglist"
           className={({ isActive }) =>
@@ -59,14 +59,14 @@ const Userphone = () => {
         {User ? (
           <button
             onClick={LogOut}
-            className="btn btn-ghost btn-circle text-3xl font-bold text-black p-2 "
+            className="btn btn-ghost btn-circle text-2xl font-bold text-black p-2 "
           >
             <BiPowerOff></BiPowerOff>{" "}
           </button>
         ) : (
           <Link
             to="/login"
-            className="btn btn-ghost btn-circle text-2xl font-bold text-black p-2 "
+            className="btn btn-ghost btn-circle text-1xl font-bold text-black p-2 "
           >
             <AiOutlineLogin></AiOutlineLogin>
           </Link>

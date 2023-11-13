@@ -16,12 +16,13 @@ import PrivateRoute from "./PrivateRoute";
 import ManageServices from "../page/ManageService/ManageServices";
 import BlockRoute from "./BlockRoute";
 import Updateservice from "../page/UpdateService/Updateservice";
+import Notfound404 from "../page/404found/Notfound404";
 
 const Router = createBrowserRouter([
   {
     path: "/",
     element: <Mainlayout></Mainlayout>,
-    errorElement: <h2> 404 </h2>,
+    errorElement: <Notfound404></Notfound404>,
     children: [
       {
         index: true,
