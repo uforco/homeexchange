@@ -9,7 +9,9 @@ const Event_place_exchange = () => {
  
   const [homedata, setHomedata] = useState(null);
   useEffect(() => {
-    axios.get(`/homesevice`).then((res) => setHomedata(res.data));
+    axios.get(`/homesevice`).then((res) => {
+      setHomedata(res.data)
+    });
   }, []);
 
   return (

@@ -6,7 +6,7 @@ import { Toaster } from "react-hot-toast";
 
 function App() {
 
-  axios.defaults.baseURL = 'http://localhost:4500';
+  axios.defaults.baseURL = 'https://home-exchange-server.vercel.app/v1';
   axios.defaults.withCredentials = true;
   return (
     <Userinfocontext>
