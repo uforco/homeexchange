@@ -9,7 +9,6 @@ const Manageupdatecard = ({ data, setUpdate }) => {
   const deleteService = (e) => {
     axios.delete(`/manageservice/654d586519eab029b846326f`).then((res) => {
       if (res.data.mySdelete.acknowledged) {
-        console.log(e);
         setUpdate(e);
         toast("Delete Service", {
           position: "bottom-right",

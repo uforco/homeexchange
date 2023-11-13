@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Login_form from "./../../components/Login_compo/Login_form";
 import Social_media from "./../../components/Login_compo/Social_media";
 import logo from "../../assets/houselogo.png";
@@ -28,13 +28,12 @@ const Login = () => {
 
               <span className="w-1/5 border-b border-black dark:border-gray-400 lg:w-1/5"></span>
             </div>
-
             <Social_media></Social_media>
-
             <p className="mt-8 text-sm font-medium text-black text-center ">
               {`Don't`} have an account?
               <Link
                 to="/registration"
+                state={useLocation().state}
                 className="font-medium text-slate-100 ml-2 dark:text-gray-200 hover:underline"
               >
                 Registration

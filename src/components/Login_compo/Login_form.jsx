@@ -1,5 +1,5 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Userauth from "../../config/Firebaseconfig";
 import toast from "react-hot-toast";
 import { FaEyeSlash, FaEye } from "react-icons/fa6";
@@ -9,6 +9,7 @@ import Loader from "../othercompo/Loader";
 import Verify from "../../assets/icons/Verify.json";
 
 const Login_form = () => {
+  const gostate = useLocation().state
   const [showpass, setShowpass] = useState(true);
   const Navigatelogin = useNavigate();
   const loginhenld = (e) => {
@@ -45,7 +46,7 @@ const Login_form = () => {
           if (userCredential.user) {
             e.target.email.value = "";
             e.target.password.value = "";
-            Navigatelogin("/");
+            Navigatelogin(gostate? gostate : "/");
             axios
               .post("/loginuser", { email: userCredential.user.email })
               .then((res) => {

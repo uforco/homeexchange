@@ -29,10 +29,8 @@ const BookingPopup = ({ data }) => {
       .get(`/bookingexhaust?customerEmail=${User?.email}&serviceID=${id}`)
       .then((res) => {
         setBookoff(res.data.exhaust);
-        // console.log(res.data.exhaust)
       });
   }, [User, id, boogkoff]);
-  console.log(boogkoff);
 
   const [formdate, setFormdate] = useState(new Date());
   // tarvelform

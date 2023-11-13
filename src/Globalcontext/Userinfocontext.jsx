@@ -50,7 +50,7 @@ const Userinfocontext = ({ children }) => {
       }
     });
     return () => unSubscribe();
-  }, [update]);
+  },[update]);
 
   const LogOutUser = () => {
     axios.post("/logoutuser", { email: User.email }).then((res) => {

@@ -45,7 +45,6 @@ const Bookinglist = () => {
                 : ` px-3 sm:px-10 `
             }
           >
-            {/* {console.log(userbooklist?.length)} */}
             <Bookingitem></Bookingitem>
           </div>
         )}

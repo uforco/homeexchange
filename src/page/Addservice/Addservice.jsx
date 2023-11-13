@@ -30,16 +30,16 @@ const Addservice = () => {
     const providerName = User.displayName;
     const providerEmail = User.email;
     const providerPhoto = User.photoURL;
-    console.log({
-      serviceName,
-      servicePhoro,
-      servicePrice,
-      serviceAria,
-      serviceDescription,
-      providerName,
-      providerEmail,
-      providerPhoto,
-    });
+    // console.log({
+    //   serviceName,
+    //   servicePhoro,
+    //   servicePrice,
+    //   serviceAria,
+    //   serviceDescription,
+    //   providerName,
+    //   providerEmail,
+    //   providerPhoto,
+    // });
     // serviceUploadtime
     const d = new Date(),
       months = [

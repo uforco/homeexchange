@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import logo from "../../assets/houselogo.png";
 import Registration_form from "./../../components/Registration_compo/Registration_form";
 import Helmattitle from "../../components/othercompo/Helmattitle";
 
 const Registration = () => {
+  
   return (
     <div className=' bg-[url("https://i.ibb.co/L9hQ5CB/login.jpg")]  bg-cover'>
       <Helmattitle title={"Home Exchage | Registration"}></Helmattitle>

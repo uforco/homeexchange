@@ -19,17 +19,19 @@ const Updateservice = () => {
     axios.get(`/singelservice/${id}`).then((res) => {
       setPrivedata(res.data);
     });
-  }, []);
+  }, [id]);
 
   // Lottie animation system
-  const defaultOptions = (e) => ({
-    loop: false,
-    autoplay: true,
-    animationData: e,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  });
+  function defaultOptions(e) {
+    return ({
+      loop: false,
+      autoplay: true,
+      animationData: e,
+      rendererSettings: {
+        preserveAspectRatio: "xMidYMid slice",
+      },
+    });
+  }
   //   update service system
   const Updateservicesystem = (e) => {
     e.preventDefault();
@@ -116,9 +118,7 @@ const Updateservice = () => {
       UploadTime: privedata?.UploadTime,
       update: serviceUploadtime,
     };
-    console.log(servicedel);
     axios.patch(`/updateservice/${privedata?._id}`, servicedel).then((res) => {
-      console.log(res.data.resultb.acknowledged);
       if (res.data.resultb.acknowledged) {
         toast("Update successful", {
           icon: (
