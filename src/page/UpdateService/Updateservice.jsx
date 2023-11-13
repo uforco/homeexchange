@@ -1,10 +1,3 @@
-// import Lottie from 'react-lottie';
-// import animationData from '../../assets/icons/Animation-addservice2.json';
-// import erroralt from '../../assets/icons/erroralt.json';
-// import Contextdata from '../../hooks/Contexthook';
-// import toast from 'react-hot-toast';
-// import axios from 'axios';
-
 import { useNavigate, useParams } from "react-router-dom";
 import Updatefrom from "./Updatefrom";
 import { useEffect, useState } from "react";
@@ -16,6 +9,7 @@ import toast from "react-hot-toast";
 import Lottie from "react-lottie";
 import erroralt from "../../assets/icons/erroralt.json";
 import animationData from "../../assets/icons/Animation-addservice2.json";
+import Helmattitle from "../../components/othercompo/Helmattitle";
 const Updateservice = () => {
   const { User } = Contextdata();
   const [privedata, setPrivedata] = useState(null);
@@ -27,7 +21,6 @@ const Updateservice = () => {
     });
   }, []);
 
-  console.log(privedata);
   // Lottie animation system
   const defaultOptions = (e) => ({
     loop: false,
@@ -37,7 +30,6 @@ const Updateservice = () => {
       preserveAspectRatio: "xMidYMid slice",
     },
   });
-
   //   update service system
   const Updateservicesystem = (e) => {
     e.preventDefault();
@@ -147,44 +139,51 @@ const Updateservice = () => {
     });
   };
 
-  return !privedata ? (
-    <div className=" flex justify-center items-center w-full h-full overflow-hidden ">
-      <div>
-        <Loader name={updatedata} wh={300}></Loader>
-      </div>
-    </div>
-  ) : (
-    <div className=" relative w-full h-full ">
-      <div className=" absolute -z-10 top-0 left-0 w-full h-full overflow-hidden flex justify-center items-center ">
-        <div className=" relative after:absolute after:w-full after:h-full after:left-0 after:top-0 after:content-['']  after:bg-opacity-20 after:backdrop-blur-sm ">
-          <img
-            src="https://i.ibb.co/rxGwM85/undraw-Updates-re-o5af.png"
-            alt=""
-          />
-        </div>
-      </div>
-      <div className=" overflow-y-scroll scrollbar-hide w-full h-full py-2 ">
-        <div>
+  return (
+    <div>
+      <Helmattitle
+        title={"Home Exchage | Dashboard - Update service"}
+      ></Helmattitle>
+      {!privedata ? (
+        <div className=" flex justify-center items-center w-full h-full overflow-hidden ">
           <div>
-            <section className=" p-6 mx-auto rounded-md ">
-              <h2 className="text-3xl pb-6 font-semibold text-gray-700 capitalize dark:text-white">
-                Update Your Service
-              </h2>
-              <form onSubmit={Updateservicesystem}>
-                <Updatefrom privedata={privedata}></Updatefrom>
-                <div className="flex justify-end mt-6">
-                  <button
-                    type="submit"
-                    className=" z-10 px-8 py-2.5 leading-5 text-black font-medium transition-colors duration-300 transform bg-cyan-500 rounded-md hover:bg-cyan-400 focus:outline-none  focus:bg-green-500"
-                  >
-                    Update
-                  </button>
-                </div>
-              </form>
-            </section>
+            <Loader name={updatedata} wh={300}></Loader>
           </div>
         </div>
-      </div>
+      ) : (
+        <div className=" relative w-full h-full ">
+          <div className=" absolute -z-10 top-0 left-0 w-full h-full overflow-hidden flex justify-center items-center ">
+            <div className=" relative after:absolute after:w-full after:h-full after:left-0 after:top-0 after:content-['']  after:bg-opacity-20 after:backdrop-blur-sm ">
+              <img
+                src="https://i.ibb.co/rxGwM85/undraw-Updates-re-o5af.png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div className=" overflow-y-scroll scrollbar-hide w-full h-full py-2 ">
+            <div>
+              <div>
+                <section className=" p-6 mx-auto rounded-md ">
+                  <h2 className="text-3xl pb-6 font-semibold text-gray-700 capitalize dark:text-white">
+                    Update Your Service
+                  </h2>
+                  <form onSubmit={Updateservicesystem}>
+                    <Updatefrom privedata={privedata}></Updatefrom>
+                    <div className="flex justify-end mt-6">
+                      <button
+                        type="submit"
+                        className=" z-10 px-8 py-2.5 leading-5 text-black font-medium transition-colors duration-300 transform bg-cyan-500 rounded-md hover:bg-cyan-400 focus:outline-none  focus:bg-green-500"
+                      >
+                        Update
+                      </button>
+                    </div>
+                  </form>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

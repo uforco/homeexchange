@@ -1,19 +1,17 @@
-import { Link } from 'react-router-dom';
-import Login_form from './../../components/Login_compo/Login_form';
-import Social_media from './../../components/Login_compo/Social_media';
-import logo from "../../assets/houselogo.png"
+import { Link } from "react-router-dom";
+import Login_form from "./../../components/Login_compo/Login_form";
+import Social_media from "./../../components/Login_compo/Social_media";
+import logo from "../../assets/houselogo.png";
+import Helmattitle from "../../components/othercompo/Helmattitle";
 const Login = () => {
   return (
-    <div className=' bg-[url("https://i.ibb.co/L9hQ5CB/login.jpg")]  bg-cover' >
-      <div className=" w-full h-screen backdrop-blur-sm  bg-opacity-40 flex items-center justify-center " >
-        <div className=" w-full " >
+    <div className=' bg-[url("https://i.ibb.co/L9hQ5CB/login.jpg")]  bg-cover'>
+      <Helmattitle title={"Home Exchage | Login"}></Helmattitle>
+      <div className=" w-full h-screen backdrop-blur-sm  bg-opacity-40 flex items-center justify-center ">
+        <div className=" w-full ">
           <div className="w-full max-w-sm p-6 m-auto mx-auto bg-gray-500 text-white bg-opacity-40 rounded-lg shadow-md dark:bg-gray-800">
             <div className="flex justify-center mx-auto">
-              <img
-                className="w-auto h-8 sm:h-12"
-                src={logo}
-                alt=""
-              />
+              <img className="w-auto h-8 sm:h-12" src={logo} alt="" />
             </div>
 
             <Login_form></Login_form>

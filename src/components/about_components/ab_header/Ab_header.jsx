@@ -2,7 +2,7 @@ import Leftsite_img from "./Leftsite_img";
 import Rightsite from "./Rightsite";
 const Ab_header = () => {
   return (
-    <div className="bg-base-300" >
+    <div className="bg-base-300">
       <div className=" w-full overflow-hidden xl:container p-0 xl:mx-auto ">
         <div className=" px-6 pb-10 sm:pb-2 sm:px-12 md:px-8 lg:px-12 ">
           <div>

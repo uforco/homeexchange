@@ -1,14 +1,14 @@
 import { Outlet } from "react-router-dom";
 import Drawer_side from "./Drawer_side";
 import Header from "./Header";
-import Navber from './Navber';
-import Footers from './../../components/footercompo/Footers';
+import Navber from "./Navber";
+import Footers from "./../../components/footercompo/Footers";
 import { ToastContainer } from "react-toastify";
 
 const Mainlayout = () => {
   return (
-    <div className=" w-full " >
-      <div  >
+    <div className=" w-full ">
+      <div>
         <Header></Header>
         <ToastContainer />
         <div className="drawer">

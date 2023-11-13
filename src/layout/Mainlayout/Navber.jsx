@@ -3,11 +3,11 @@ import Logo from "./../../components/othercompo/Logo";
 import { Link, NavLink } from "react-router-dom";
 // 'use client';
 import { MdFavoriteBorder } from "react-icons/md";
-import Usersintro from './../../components/user/Usersintro';
+import Usersintro from "./../../components/user/Usersintro";
 import Contextdata from "../../hooks/Contexthook";
 
 const Navber = () => {
-  const{userbooklist} = Contextdata()
+  const { userbooklist } = Contextdata();
 
   return (
     <div className=" overflow-hidden xl:container p-0 xl:mx-auto ">
@@ -44,23 +44,34 @@ const Navber = () => {
             <Manu_item></Manu_item>
           </ul>
         </div>
-        <div className=" hidden sm:block " >
-          <div className=" flex justify-between items-center gap-5 " >
+        <div className=" hidden sm:block ">
+          <div className=" flex justify-between items-center gap-5 ">
             <div>
-                <NavLink to="/bookinglist" className={ ({isActive}) => isActive? "btn bg-gray-300 btn-ghost btn-circle" :  "btn btn-ghost btn-circle"}>
-                  <div className="indicator">
-                    <span className=" text-2xl font-bold " ><MdFavoriteBorder></MdFavoriteBorder></span>
-                    {
-                      userbooklist? 
-                        userbooklist?.length === 0? 
-                          ""
-                        :
-                        <span className="badge badge-sm indicator-item">{userbooklist?.length}</span>
-                      :
+              <NavLink
+                to="/bookinglist"
+                className={({ isActive }) =>
+                  isActive
+                    ? "btn bg-gray-300 btn-ghost btn-circle"
+                    : "btn btn-ghost btn-circle"
+                }
+              >
+                <div className="indicator">
+                  <span className=" text-2xl font-bold ">
+                    <MdFavoriteBorder></MdFavoriteBorder>
+                  </span>
+                  {userbooklist ? (
+                    userbooklist?.length === 0 ? (
                       ""
-                    }
-                  </div>
-                </NavLink>
+                    ) : (
+                      <span className="badge badge-sm indicator-item">
+                        {userbooklist?.length}
+                      </span>
+                    )
+                  ) : (
+                    ""
+                  )}
+                </div>
+              </NavLink>
             </div>
             <Usersintro></Usersintro>
           </div>

@@ -9,25 +9,24 @@ import Loader from "../othercompo/Loader";
 import Verify from "../../assets/icons/Verify.json";
 const Social_media = () => {
   const provider = new GoogleAuthProvider();
-  const {isLoad, setIsload } = Contextdata()
-  const getNavigate = useNavigate()
+  const { isLoad, setIsload } = Contextdata();
+  const getNavigate = useNavigate();
   const googleLogin = () => {
-    signInWithPopup(Userauth, provider)
-    .then((result) => {
-      console.log(result)
-      if(result){
-        setIsload(!isLoad)
-        getNavigate("/")
-        axios.post("/loginuser", {email:result.user.email}).then((res) => {
+    signInWithPopup(Userauth, provider).then((result) => {
+      console.log(result);
+      if (result) {
+        setIsload(!isLoad);
+        getNavigate("/");
+        axios.post("/loginuser", { email: result.user.email }).then((res) => {
           if (res.data.Verify) {
-              toast("Welcome to Home Exchange", {
-                icon: <Loader name={Verify} wh={50}></Loader>,
-              });
+            toast("Welcome to Home Exchange", {
+              icon: <Loader name={Verify} wh={50}></Loader>,
+            });
           }
         });
       }
-    })
-  }
+    });
+  };
 
   return (
     <div className="flex items-center mt-6 -mx-2">

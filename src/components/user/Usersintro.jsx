@@ -1,27 +1,24 @@
 import { Link, useNavigate } from "react-router-dom";
-import user from "../../assets/icons/profile-user.png"
-import Contextdata from './../../hooks/Contexthook';
+import user from "../../assets/icons/profile-user.png";
+import Contextdata from "./../../hooks/Contexthook";
 
 const Usersintro = () => {
-  const Navigatebackhome = useNavigate()
+  const Navigatebackhome = useNavigate();
   // console.log( Contextdata() )
-  const {User, isLoad, LogOutUser} = Contextdata() 
+  const { User, isLoad, LogOutUser } = Contextdata();
   const LogOut = () => {
-    LogOutUser().then(()=>{
-      Navigatebackhome("/")
-    })
-      .catch()
-  }
+    LogOutUser()
+      .then(() => {
+        Navigatebackhome("/");
+      })
+      .catch();
+  };
   return (
     <div>
       <div className="dropdown static  dropdown-end">
         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
           <div className="w-10 rounded-full">
-            <img src={
-                !isLoad?
-                  `${User?.photoURL}`
-                :
-                   user} />
+            <img src={!isLoad ? `${User?.photoURL}` : user} />
           </div>
         </label>
         <ul
@@ -30,25 +27,18 @@ const Usersintro = () => {
         >
           <li>
             <span className="justify-between">
-                {
-                  !isLoad?
-                    User?.displayName
-                  :
-                    "Guest User "
-                }
+              {!isLoad ? User?.displayName : "Guest User "}
             </span>
           </li>
           <li>
-            <Link to="/dashboard" >Dashboard</Link>
+            <Link to="/dashboard">Dashboard</Link>
           </li>
           <li>
-            {
-              !User? 
-                <Link to="/login" >LogIn</Link>
-              :
-                <button onClick={LogOut}  >Log Out</button>
-            }
-            
+            {!User ? (
+              <Link to="/login">LogIn</Link>
+            ) : (
+              <button onClick={LogOut}>Log Out</button>
+            )}
           </li>
         </ul>
       </div>

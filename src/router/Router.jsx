@@ -72,9 +72,9 @@ const Router = createBrowserRouter([
   {
     path: "/registration",
     element: (
-      <>
+      <BlockRoute>
         <Registration></Registration>
-      </>
+      </BlockRoute>
     ),
   },
   {

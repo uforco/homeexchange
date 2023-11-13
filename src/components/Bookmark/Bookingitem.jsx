@@ -1,17 +1,16 @@
-
-import Contextdata from '../../hooks/Contexthook';
-import Bookingserviceitem from './Bookingserviceitem';
+import Contextdata from "../../hooks/Contexthook";
+import Bookingserviceitem from "./Bookingserviceitem";
 const Bookingitem = () => {
-    const {userbooklist} = Contextdata()
-    // console.log(userbooklist)
+  const { userbooklist } = Contextdata();
+  // console.log(userbooklist)
 
   return (
-    <div  >
+    <div>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
-          <thead >
-            <tr  >
+          <thead>
+            <tr>
               <th>Service Name</th>
               <th>Service Date</th>
               <th>Status</th>
@@ -19,15 +18,12 @@ const Bookingitem = () => {
             </tr>
           </thead>
           <tbody>
-
-            {
-                userbooklist?.map((item, idx) => <Bookingserviceitem key={idx} data={item} ></Bookingserviceitem> )
-            }
+            {userbooklist?.map((item, idx) => (
+              <Bookingserviceitem key={idx} data={item}></Bookingserviceitem>
+            ))}
           </tbody>
           {/* foot */}
-          <tfoot>
-                {/* see */}
-          </tfoot>
+          <tfoot>{/* see */}</tfoot>
         </table>
       </div>
     </div>

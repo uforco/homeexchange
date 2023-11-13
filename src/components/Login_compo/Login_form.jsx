@@ -46,13 +46,15 @@ const Login_form = () => {
             e.target.email.value = "";
             e.target.password.value = "";
             Navigatelogin("/");
-            axios.post("/loginuser", {email:userCredential.user.email}).then((res) => {
-              if (res.data.Verify) {
+            axios
+              .post("/loginuser", { email: userCredential.user.email })
+              .then((res) => {
+                if (res.data.Verify) {
                   toast("Welcome to Home Exchange", {
                     icon: <Loader name={Verify} wh={50}></Loader>,
                   });
-              }
-            });
+                }
+              });
           }
         })
         .catch((error) => {

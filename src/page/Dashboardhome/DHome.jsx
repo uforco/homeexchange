@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+import Helmattitle from "../../components/othercompo/Helmattitle";
 const DHome = () => {
   return (
     <div>
+      <Helmattitle title={"Home Exchage | Dashboard"}></Helmattitle>
       <div className=" relative ">
         <div>
           <img src="https://i.ibb.co/m4hX9w2/dashborad.png" alt="" />

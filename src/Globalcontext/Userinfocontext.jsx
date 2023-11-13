@@ -42,7 +42,6 @@ const Userinfocontext = ({ children }) => {
         });
       }
       if (!user) {
-        
         setUser(user);
         setIsload(true);
         setisuserload(false);
@@ -55,9 +54,9 @@ const Userinfocontext = ({ children }) => {
 
   const LogOutUser = () => {
     axios.post("/logoutuser", { email: User.email }).then((res) => {
-        if (res.data.success) {
-          console.log(res.data);
-        }
+      if (res.data.success) {
+        console.log(res.data);
+      }
     });
     setIsload(!isLoad);
     return signOut(Userauth);

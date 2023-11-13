@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-const Workservise_card = ({img, step, discrip}) => {
+const Workservise_card = ({ img, step, discrip }) => {
   return (
     <div className="card w-[300px] sm:w-[270px] md:w-[258px] lg:w-[240px] h-72 sm:h-[300px] hover:border-red-500  border overflow-hidden bg-slate-200 m-0 shadow-xl">
       <div className=" flex flex-col h-full pb-5 items-center justify-between  ">
@@ -20,12 +20,10 @@ const Workservise_card = ({img, step, discrip}) => {
   );
 };
 
-
-
 export default Workservise_card;
 
 Workservise_card.propTypes = {
-    img: PropTypes.node,
-    step: PropTypes.string,
-    discrip: PropTypes.string,
-}
+  img: PropTypes.node,
+  step: PropTypes.string,
+  discrip: PropTypes.string,
+};

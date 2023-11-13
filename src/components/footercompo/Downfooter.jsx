@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { Footer } from 'flowbite-react';
-import { BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
+import { Footer } from "flowbite-react";
+import { BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-icons/bs";
 
 const Downfooter = () => {
   return (

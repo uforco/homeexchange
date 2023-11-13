@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
-import { PropTypes } from 'prop-types';
+import { PropTypes } from "prop-types";
 
-const Services = ({data}) => {
-
+const Services = ({ data }) => {
   return (
     <div>
-      <Link to={`/servicedetails/${data?._id}`} >
+      <Link to={`/servicedetails/${data?._id}`}>
         <div className="   hover:scale-105 transition-all ">
           <div className="flex flex-col h-[400px] overflow-hidden bg-white border shadow-sm rounded-xl  transition-all  hover:bg-gradient-to-tl from-slate-400/10 via-slate-100 via-30% to-white to-90% hover:border-slate-50  ">
             <div className=" relative ">
@@ -34,7 +33,7 @@ const Services = ({data}) => {
               </div>
             </div>
             <div className="p-4 flex flex-col md:p-5">
-              <div className=" h-[130px]  overflow-hidden" >
+              <div className=" h-[130px]  overflow-hidden">
                 <h3 className="text-md pb-1 font-bold text-gray-800 dark:text-white">
                   {data?.serviceName.slice(0, 30)}
                 </h3>
@@ -42,12 +41,12 @@ const Services = ({data}) => {
                   {data?.serviceDescription.slice(0, 130)}
                 </p>
               </div>
-              <div className=" flex justify-between " >
+              <div className=" flex justify-between ">
                 <p className="mt-2 flex-grow text-xs text-gray-500 dark:text-gray-500">
                   {data?.UploadTime}
                 </p>
                 <span className="mt-2 font-bold flex-grow text-xs text-center capitalize rounded-full overflow-hidden p-1 bg-slate-200 text-gray-500 dark:text-gray-500">
-                  $ { data?.servicePrice}
+                  $ {data?.servicePrice}
                 </span>
               </div>
             </div>
@@ -59,7 +58,7 @@ const Services = ({data}) => {
 };
 
 Services.propTypes = {
-  data: PropTypes.object
-}
+  data: PropTypes.object,
+};
 
 export default Services;

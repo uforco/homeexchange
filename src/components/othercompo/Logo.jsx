@@ -1,4 +1,4 @@
-import logo from "../../assets/houselogo.png"
+import logo from "../../assets/houselogo.png";
 const Logo = () => {
   return (
     <div className=" flex justify-start gap-2 items-center ">
