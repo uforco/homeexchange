@@ -5,12 +5,13 @@ import { PropTypes } from "prop-types";
 const PrivateRoute = ({ children }) => {
   const { User, isuserload } = Contextdata();
   const locationstate = useLocation().pathname;
+
   if (isuserload) {
     return <div className="progress w-full"></div>;
   }
 
   if (!isuserload && !User?.email) {
-    return <Navigate to="/login" state={locationstate} />;
+    return <Navigate to="/login" state={locationstate} replace={true} />;
   }
 
   return children;

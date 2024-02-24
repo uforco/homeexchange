@@ -66,7 +66,7 @@ const Userphone = () => {
         ) : (
           <Link
             to="/login"
-            className="btn btn-ghost btn-circle text-1xl font-bold text-black p-2 "
+            className="btn btn-ghost btn-circle text-2xl font-bold text-black p-2 "
           >
             <AiOutlineLogin></AiOutlineLogin>
           </Link>
